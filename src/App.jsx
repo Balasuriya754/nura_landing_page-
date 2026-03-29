@@ -1,17 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import useContactForm from './hooks/useContactForm';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 const heroBgImages = [
-  'public/caretender.jpg',
-  'public/old_person_3.jpg',
-  'public/physio1.jpg',
-  'public/hand_in_hand.jpg',
+  'public/hero_caretender.jpg',
+  'public/hero/Mahadevan_Sitting2_LJ_India.jpg',
+  'public/hero_old_person6.jpg',
+  'public/hero_physio1.jpg',
 ];
 
 // Images that scroll inside the collage layout
 const collageScrollImages = [
-  'public/old_person_3.jpg',
-  'public/caretender.jpg',
-  'public/physio1.jpg',
+  'public/hero_old_person6.jpg',
+  'public/hero_caretender.jpg',
+  'public/hero_physio1.jpg',
   'public/hand_in_hand.jpg',
 ];
 
@@ -52,11 +56,11 @@ const styles = `
   .accent-line { width:52px; height:4px; background:var(--pink); border-radius:2px; margin-bottom:18px; }
 
   /* NAV */
-  nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:68px; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); box-shadow:0 2px 12px rgba(91,45,142,0.06); transition:box-shadow 0.3s; }
+  nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:79px; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); box-shadow:0 2px 12px rgba(91,45,142,0.06); transition:box-shadow 0.3s; }
   nav.nav-scrolled { box-shadow:0 4px 24px rgba(91,45,142,0.12); }
   .nav-logo { display:flex; align-items:center; gap:10px; }
-  .nav-logo img { height:52px; width:auto; object-fit:contain; }
-  .nav-logo span { font-size:18px; font-weight:700; color:var(--purple); }
+  .nav-logo img { height:120px; width:auto; object-fit:contain; }
+  .nav-logo span { font-size:20px; font-weight:700; color:var(--purple); }
   .nav-links { display:flex; gap:28px; }
   .nav-links a { font-size:14px; color:var(--gray-mid); text-decoration:none; font-weight:500; padding:5px 8px; border-radius:7px; transition:color 0.2s, background 0.2s; }
   .nav-links a:hover { color:var(--purple); background:var(--pale); }
@@ -190,7 +194,7 @@ const styles = `
 
   /* ══ STATISTICS — white bg always, no transparency on mobile ══ */
   .stats-section { padding:72px 40px; position:relative; overflow:hidden; background:#ffffff; }
-  .stats-bg-img { position:absolute; inset:0; z-index:0; background-image:url('public/lonely_old_man.jpg'); background-size:cover; background-position:center 30%; opacity:0.15; pointer-events:none; }
+  .stats-bg-img { position:absolute; inset:0; z-index:0; background-image:url('public/lonely_old_man.jpg'); background-size:cover; background-position:center 30%; opacity:0.35; pointer-events:none; }
   .stats-section .section-header { position:relative; z-index:1; }
   .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1020px; margin:0 auto; position:relative; z-index:1; }
   .stat-card { position:relative; background:#ffffff; border:1px solid var(--border); border-radius:18px; padding:28px 24px; transition:transform 0.3s, box-shadow 0.3s; z-index:2; }
@@ -446,7 +450,7 @@ const styles = `
   footer { background:var(--footer-bg); }
   .footer-top { padding:48px 40px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px; border-bottom:1px solid rgba(255,255,255,0.07); }
   .footer-logo-row { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
-  .footer-logo-row img { height:60px; width:auto; object-fit:contain; }
+  .footer-logo-row img { height:120px; width:auto; object-fit:contain; }
   .footer-brand-col h4 { font-size:18px; font-weight:700; color:var(--pink); }
   .footer-brand-col p { font-size:12px; color:rgba(160,140,190,0.72); margin-top:2px; }
   .footer-tagline { font-size:14px; color:rgba(200,170,230,0.58); font-style:italic; margin-top:7px; }
@@ -673,7 +677,7 @@ const styles = `
     .footer-top { padding:32px 16px; grid-template-columns:1fr; gap:24px; }
     .footer-brand-col { grid-column:auto; }
     .footer-bottom { flex-direction:column; gap:10px; padding:16px; text-align:center; }
-    .footer-logo-row img { height:52px; }
+    .footer-logo-row img { height:120px; }
 
     .section-title { font-size:24px; }
     .why-left h2 { font-size:24px; }
@@ -858,7 +862,7 @@ const WaFloat = () => {
 
   return (
     <div ref={wrapperRef} className="wa-float-wrapper" style={{ position: 'fixed', bottom: `${position.bottom}px`, right: `${position.right}px`, zIndex: 999, cursor: isDragging ? 'grabbing' : 'grab' }}>
-      <a href="https://wa.me/919499944939" className={`floating-whatsapp ${visible ? 'visible' : ''}`} onMouseDown={handleMouseDown} onTouchStart={handleTouchStart} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" className={`floating-whatsapp ${visible ? 'visible' : ''}`} onMouseDown={handleMouseDown} onTouchStart={handleTouchStart} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <span className="wa-ring wa-ring-1"></span><span className="wa-ring wa-ring-2"></span><span className="wa-ring wa-ring-3"></span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg>
       </a>
@@ -880,7 +884,7 @@ const Nav = () => {
   return (
     <>
       <nav className={scrolled ? 'nav-scrolled' : ''}>
-        <div className="nav-logo"><img src="/sixty-plus-logo.png" alt="SixtyPlus Global" /><span>SixtyPlus Global</span></div>
+        <div className="nav-logo"><img src="/so.png" alt="SixtyPlus Global" /><span>SixtyPlus Global</span></div>
         <div className="nav-links">{links.map((l,i) => <a key={l} href={hrefs[i]}>{l}</a>)}</div>
         <a href="#consult" className="nav-cta">Talk to Us</a>
         <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}><span></span><span></span><span></span></div>
@@ -924,7 +928,7 @@ const Hero = () => {
           </div>
           <div className="hero-cta-row">
             <a href="#consult" className="cta-btn-primary">Get Free Consultation</a>
-            <a href="https://wa.me/919499944939" className="cta-btn-wa" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" className="cta-btn-wa" target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg>
               WhatsApp Us
             </a>
@@ -949,7 +953,7 @@ const servicesData = [
   { img:'public/home_nurse_4.jpg', title:'Nurse Assistance', desc:'Trained nurses for daily care at home.' },
   { img:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', title:'24x7 Emergency Support', desc:'Round-the-clock emergency response.' },
   { img:'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&q=80', title:'Medicine Management', desc:'Timely reminders and medication tracking.' },
-  { img:'public/ai-companion.png', title:'Companion AI', desc:'AI-powered engagement and safety monitoring.' },
+  { img:'public/ai-companion.jpg', title:'Companion AI', desc:'AI-powered engagement and safety monitoring.' },
   { img:'public/online_doctor.jpg', title:'Online Consultations', desc:'Video consultations with specialists.' },
   { img:'public/grabbar.jpg', title:'Senior Friendly Home', desc:'Home modifications for safety and ease.' },
 ];
@@ -984,26 +988,10 @@ const Services = () => (
 
 /* ── WHY + FORM ── */
 const WhyAndForm = () => {
-  const [formData, setFormData] = useState({ name:'',phone:'',email:'',location:'',age:'',mobility:'' });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const validate = () => {
-    const e = {};
-    if (!formData.name.trim()) e.name='Name is required';
-    if (!formData.phone.trim()) e.phone='Phone is required';
-    else if (!/^\d{10}$/.test(formData.phone.trim())) e.phone='Enter valid 10-digit number';
-    if (!formData.email.trim()) e.email='Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) e.email='Enter valid email';
-    if (!formData.location.trim()) e.location='Location is required';
-    if (!formData.age.trim()) e.age='Age is required';
-    else if (isNaN(formData.age)||+formData.age<40||+formData.age>120) e.age='Enter valid age (40-120)';
-    if (!formData.mobility) e.mobility='Please select mobility status';
-    return e;
-  };
-  const handleChange = (field, value) => { setFormData(p=>({...p,[field]:value})); if (errors[field]) setErrors(p=>({...p,[field]:''})); };
-  const handleSubmit = (e) => { e.preventDefault(); const errs = validate(); if (Object.keys(errs).length > 0) { setErrors(errs); return; } setSubmitted(true); };
+  const { formData, errors, submitted, loading, showV2, handleChange, submitForm, handleV2Submit, resetForm, setFormData } = useContactForm();
   return (
     <section className="why-form-section" id="why">
+      <div id="consult"></div>
       <div className="emotional-strip">
         <div className="emotion-panel">
           <img src="public/lonely_old_man.jpg" alt="Elderly man alone" />
@@ -1032,7 +1020,7 @@ const WhyAndForm = () => {
               <div className="benefit-item" key={i}><div className="benefit-check">✓</div><span>{item}</span></div>
             ))}
           </div>
-          <a href="https://wa.me/919499944939" className="wa-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" className="wa-btn" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg>
             WhatsApp Us Now
           </a>
@@ -1044,7 +1032,7 @@ const WhyAndForm = () => {
             {submitted ? (
               <div className="form-success"><div className="form-success-icon">✓</div><h4>Thank you!</h4><p>Our care manager will reach out within 24 hours.</p></div>
             ) : (
-              <form className="form-body" onSubmit={handleSubmit} noValidate>
+              <form className="form-body" onSubmit={submitForm} noValidate>
                 <div className="form-grid">
                   {[{field:'name',label:'Name *',type:'text',placeholder:'Your full name'},{field:'email',label:'Email ID *',type:'email',placeholder:'your@email.com'},{field:'location',label:'Location of Parent *',type:'text',placeholder:'City, Tamil Nadu'},{field:'age',label:'Age of Parent *',type:'number',placeholder:'e.g. 68'}].map(({field,label,type,placeholder}) => (
                     <div className="form-group" key={field}>
@@ -1072,7 +1060,24 @@ const WhyAndForm = () => {
                   </select>
                   {errors.mobility && <span className="error-msg">{errors.mobility}</span>}
                 </div>
-                <button type="submit" className="form-submit">Talk to a Care Expert Today</button>
+                {showV2 && (
+                  <div className="recaptcha-container" style={{marginBottom:13}}>
+                    {import.meta.env.VITE_RECAPTCHA_V2_KEY ? (
+                      <div>
+                        <div className="g-recaptcha" data-sitekey={import.meta.env.VITE_RECAPTCHA_V2_KEY}></div>
+                        <script async src="https://www.google.com/recaptcha/api.js"></script>
+                      </div>
+                    ) : (
+                      <div style={{color: 'red', fontSize: '12px'}}>
+                        ReCAPTCHA V2 key not configured. Contact admin.
+                      </div>
+                    )}
+                    {errors.recaptcha && <span className="error-msg">{errors.recaptcha}</span>}
+                  </div>
+                )}
+                {!showV2 && <button type="submit" className="form-submit" disabled={loading}>Talk to a Care Expert Today</button>}
+                {showV2 && <button type="button" className="form-submit" onClick={handleV2Submit} disabled={loading}>Submit</button>}
+                {loading && <span className="form-loading">Submitting...</span>}
                 <p className="form-note">No spam. No pressure. 100% confidential.</p>
               </form>
             )}
@@ -1164,7 +1169,7 @@ const Statistics = () => (
         <blockquote>"In Tamil Nadu, 1 in 3 elders lives alone. Their silence is not peace — it's the absence of someone to call."</blockquote>
         <cite>— Geriatric Care Research, Tamil Nadu 2024</cite>
       </div>
-      <div className="stats-quote-cta"><a href="#consult">Be That Someone →</a></div>
+      <div className="stats-quote-cta"><a href="#why">Be That Someone →</a></div>
     </div>
   </section>
 );
@@ -1291,7 +1296,7 @@ const CompetitiveAdvantage = () => (
     <div className="adv-testimonial">
       {[
         { img:'public/errands1.jpg', quote:'I live in London. 60Plus made me feel like I\'m right there with my parents in Chennai. They call every day.' },
-        { img:'public/old_person_3.jpg', quote:'அம்மா இப்போ மருத்துவர் வீட்டுக்கு வருவாங்க. நான் கவலைப்பட வேண்டியதில்லை.' },
+        { img:'public/hero_old_person6.jpg', quote:'அம்மா இப்போ மருத்துவர் வீட்டுக்கு வருவாங்க. நான் கவலைப்பட வேண்டியதில்லை.' },
         { img:'public/caretender.jpg', quote:'The care manager knows my father\'s name, his habits, his medicines. That level of personal care is rare.' },
       ].map((t,i) => (
         <div className="adv-testi-card" key={i}>
@@ -1328,7 +1333,7 @@ const Pricing = () => {
             ))}
           </div>
           <a href="#consult" className="pkg-cta">Enroll Now — $50/month</a>
-          <p className="pkg-sub-cta">Or <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">WhatsApp us: +91 94999 44939</a></p>
+          <p className="pkg-sub-cta">Or <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" target="_blank" rel="noopener noreferrer">WhatsApp us: +91 94999 44939</a></p>
         </div>
       </div>
     </section>
@@ -1365,27 +1370,13 @@ const FAQ = () => {
 };
 
 /* ── FOOTER ── */
-const TermsPage = ({ onClose }) => (
-  <div className="terms-overlay">
-    <div className="terms-modal">
-      <button className="terms-close" onClick={onClose}>✕</button>
-      <h2>Terms & Conditions</h2>
-      <div className="terms-content">
-        {[['1. Services','60Plus Global provides senior care coordination services including doctor visits, nursing, physiotherapy, and companion support across Tamil Nadu.'],['2. Eligibility','Services are available to individuals aged 55 and above residing within our service areas.'],['3. Payments','Subscription fees are charged monthly. All fees are stated in USD and INR equivalent. No hidden charges apply.'],['4. Privacy','All personal information shared with us is strictly confidential and used only for care coordination purposes. We never sell your data.'],['5. Liability','60Plus Global coordinates care services through licensed professionals. We are not liable for third-party service failures.'],['6. Cancellation','You may cancel your subscription at any time with 30 days notice. Refunds are processed on a pro-rata basis.'],['7. Contact','For queries: +91 94999 44939 | sixtyplus@care.in']].map(([h,p],i)=><span key={i} style={{display:'contents'}}><h4>{h}</h4><p>{p}</p></span>)}
-      </div>
-    </div>
-  </div>
-);
-
 const Footer = () => {
-  const [showTerms, setShowTerms] = useState(false);
   return (
     <>
-      {showTerms && <TermsPage onClose={() => setShowTerms(false)} />}
       <footer>
         <div className="footer-top">
           <div className="footer-brand-col">
-            <div className="footer-logo-row"><img src="/sixty-plus-logo.png" alt="SixtyPlus Global" /><div><h4>SixtyPlus Global</h4><p>India's #1 Emerging Senior Preventive Care Platform</p></div></div>
+            <div className="footer-logo-row"><img src="/so.png" alt="SixtyPlus Global" /><div><h4>SixtyPlus Global</h4><p>India's #1 Emerging Senior Preventive Care Platform</p></div></div>
             <p className="footer-tagline">Caring for the ones who cared for you.</p>
           </div>
           <div className="footer-links-col">
@@ -1395,20 +1386,20 @@ const Footer = () => {
           <div className="footer-contact-col">
             <h5>Contact</h5>
             <a href="tel:+919499944939">+91 94999 44939</a>
-            <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
             <div className="footer-social">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <a href="https://www.instagram.com/life_after_sixty_tamil" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-              <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-icon social-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg></a>
+              <a href="https://m.youtube.com/@LifeAfterSixty-Tamil" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+              <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-icon social-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173-.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg></a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
           <p>© 2025 SixtyPlus Global. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <button className="footer-link-btn" onClick={() => setShowTerms(true)}>Terms & Conditions</button>
-            <button className="footer-link-btn" onClick={() => setShowTerms(true)}>Privacy Policy</button>
+            <a href="/terms-and-conditions" className="footer-link-btn">Terms & Conditions</a>
+            <a href="/privacy-policy" className="footer-link-btn">Privacy Policy</a>
           </div>
         </div>
       </footer>
@@ -1421,20 +1412,28 @@ export default function App() {
   return (
     <>
       <style>{styles}</style>
-      <Nav />
-      <WaFloat />
-      <main>
-        <Hero />
-        <Services />
-        <WhyAndForm />
-        <HappyParents />
-        <Statistics />
-        <AllServices />
-        <CompetitiveAdvantage />
-        <Pricing />
-        <FAQ />
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Nav />
+            <WaFloat />
+            <main>
+              <Hero />
+              <Services />
+              <WhyAndForm />
+              {/* <HappyParents /> */}
+              <Statistics />
+                <AllServices />
+              <CompetitiveAdvantage />
+              <Pricing />
+              <FAQ />
+            </main>
+            <Footer />
+          </>
+        } />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+      </Routes>
     </>
   );
 }
