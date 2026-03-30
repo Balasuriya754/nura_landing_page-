@@ -135,17 +135,21 @@ const Hero = () => {
           </div> */}
         </div>
         <div className="hero-content">
-          <span className="hero-eyebrow">India's #1 Emerging Senior Care Platform</span>
+          <span className="hero-eyebrow">Trusted by 50,000+ families across Tamil Nadu</span>
           <h1 className="hero-h1">
-            Your Parents Might Be<br /><em>Hiding Something</em> From You.
+            When You’re Away<br /> Who’s <em>Taking Care</em> of Your <em>Parents?</em>
           </h1>
           <div className="hero-quote">
-            <span className="hq-label">What families say</span>
-            <p className="hq-tamil tamil">"அம்மா வாய்ல 'நல்லா இருக்கேன்'னு சொல்றாங்க… கண்ணு வேற ஒண்ணு சொல்லுது."</p>
-            <p className="hq-eng">"Mom says she's fine… but her eyes tell a different story."</p>
+            <p className="hq-tamil tamil">"நீங்கள் அருகில் இல்லாத நேரங்களில் அவர்கள் தனியாக இருக்கலாம்…
+நாங்கள் அவர்களுடன் இருக்கிறோம் — நீங்கள் நிம்மதியாக இருக்கலாம்."</p>
+            <p className="hq-eng">Trusted in-home care, regular check-ins, and support — so your parents are never alone.</p>
           </div>
           <div className="hero-stats-row">
-            {[['50,000+', 'Families'], ['600+', 'Doctors'], ['100+', 'Tests']].map(([n, l]) => (
+            {[
+              ['50,000+', 'Families we serve'],
+              ['600+', 'Doctors in network'],
+              ['100+', 'Care services']
+            ].map(([n, l]) => (
               <div key={l} className="hstat">
                 <div className="hstat-num">{n}</div>
                 <div className="hstat-lbl">{l}</div>

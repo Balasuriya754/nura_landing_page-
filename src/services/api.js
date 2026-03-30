@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Backend API URL - use environment variable or ngrok for production
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://delaney-actinolitic-incapably.ngrok-free.dev';
 
 const api = axios.create({
