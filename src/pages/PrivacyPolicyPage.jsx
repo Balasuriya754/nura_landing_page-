@@ -1,196 +1,242 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const PrivacyPolicyPage = () => {
+export default function PrivacyPolicyPage() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
-    <div className="terms-page">
-      <div className="terms-page-header">
-        <div className="terms-page-header-content">
-          <h1>Privacy Policy</h1>
-          <p>Last Updated: January 2025</p>
-        </div>
+    <div style={styles.page}>
+      <div style={styles.topBar}>
+        <Link to="/" style={styles.backLink}>← Back to SixtyPlus Global</Link>
       </div>
-
-      <div className="terms-page-content">
-        <div className="terms-page-body">
-          <p className="terms-page-intro">
-            At 60Plus Global, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.
+      <div style={styles.container}>
+        <div style={styles.docHeader}>
+          <p style={styles.docMeta}>SixtyPlus Global &nbsp;·&nbsp; Effective Date: January 1, 2025</p>
+          <h1 style={styles.docTitle}>Privacy Policy</h1>
+          <p style={styles.docIntro}>
+            Your privacy matters to us. This Privacy Policy explains how SixtyPlus Global collects,
+            uses, discloses, and safeguards your information when you visit our website or use our services.
+            Please read this policy carefully.
           </p>
+          <div style={styles.divider} />
+        </div>
 
-          <div className="terms-section">
-            <h2 className="terms-section-title">1. Information We Collect</h2>
-            <p className="terms-section-desc">
-              When you use our services, we collect information such as your name, phone number, email address, location, and age of your loved one. This helps us provide personalized care coordination services.
-            </p>
+        <Section title="1. Information We Collect">
+          <p>When you purchase something from us or fill out a consultation form, as part of that process, we collect the personal information you give us such as your name, address, phone number and email address.</p>
+          <p>When you browse our site, we also automatically receive your computer's internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.</p>
+          <p>With your permission, we may send you emails about our services, care programmes and other updates.</p>
+        </Section>
+
+        <Section title="2. How We Use Your Information">
+          <p>We use the information we collect in the following ways:</p>
+          <ul style={styles.list}>
+            <li>To process your enquiries and consultation requests</li>
+            <li>To provide and improve our senior care services</li>
+            <li>To communicate with you about your account, care plan, or enquiry</li>
+            <li>To send you information about our services, if you have opted in</li>
+            <li>To comply with applicable laws and regulations</li>
+          </ul>
+        </Section>
+
+        <Section title="3. Consent">
+          <p>When you provide us with personal information to complete a transaction, verify your payment, place an order, or request a service, we imply that you consent to our collecting it and using it for that specific reason only. If we ask for your personal information for a secondary reason, like marketing, we will either ask you directly for your expressed consent, or provide you with an opportunity to opt out.</p>
+          <p><strong>How to withdraw consent:</strong> If after you opt-in, you change your mind, you may withdraw your consent for us to contact you, for the continued collection, use or disclosure of your information, at any time, by contacting us at <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a>.</p>
+        </Section>
+
+        <Section title="4. Disclosure of Information">
+          <p>We may disclose your personal information if we are required by law to do so or if you violate our Terms of Service.</p>
+          <p>In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us. However, certain third-party service providers, such as payment gateways and other payment transaction processors, have their own privacy policies in respect to the information we are required to provide to them for your purchase-related transactions.</p>
+          <p>For these providers, we recommend that you read their privacy policies so you can understand the manner in which your personal information will be handled. Certain providers may be located in or have facilities in a different jurisdiction than either you or us, and your information may become subject to the laws of that jurisdiction.</p>
+          <p>Once you leave our website or are redirected to a third-party website or application, you are no longer governed by this Privacy Policy or our website's Terms of Service.</p>
+        </Section>
+
+        <Section title="5. Analytics">
+          <p>Our site uses Google Analytics to help us learn about site visits and the pages being viewed. Google Analytics collects data about your use of our site in an anonymised form. This data includes pages visited, time spent, and general location. You can opt out of Google Analytics tracking by using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={styles.link}>Google Analytics opt-out browser add-on</a>.</p>
+        </Section>
+
+        <Section title="6. Security">
+          <p>To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed, disclosed, altered or destroyed.</p>
+          <p>If you provide us with your payment information, the information is encrypted using secure socket layer technology (SSL). Although no method of transmission over the Internet or electronic storage is 100% secure, we follow all applicable requirements and implement additional generally accepted industry standards.</p>
+        </Section>
+
+        <Section title="7. Cookies">
+          <p>We use cookies to maintain session information and to improve your browsing experience. You can choose to disable cookies through your individual browser options. If you disable cookies, some features of our site may not function properly.</p>
+          <p>By using our website, you agree to allow third parties to process your IP address, in order to determine your location for the purpose of currency conversion and relevant service display. You also agree to have that data stored in a session cookie in your browser (a temporary cookie which gets automatically removed when you close your browser).</p>
+        </Section>
+
+        <Section title="8. Age of Consent">
+          <p>By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.</p>
+        </Section>
+
+        <Section title="9. Changes to This Privacy Policy">
+          <p>We reserve the right to modify this privacy policy at any time, so please review it frequently. Changes and clarifications will take effect immediately upon their posting on the website. If we make material changes to this policy, we will notify you here that it has been updated, so that you are aware of what information we collect, how we use it, and under what circumstances, if any, we use and/or disclose it.</p>
+          <p>If our company is acquired or merged with another company, your information may be transferred to the new owners so that we may continue to provide services to you.</p>
+        </Section>
+
+        <Section title="10. Your Rights">
+          <p>You have the right to:</p>
+          <ul style={styles.list}>
+            <li>Access the personal information we hold about you</li>
+            <li>Request correction of inaccurate personal information</li>
+            <li>Request deletion of your personal information, subject to legal obligations</li>
+            <li>Object to the processing of your personal information</li>
+            <li>Withdraw consent at any time where we are relying on consent to process your personal data</li>
+          </ul>
+          <p>To exercise any of these rights, please contact us using the details below.</p>
+        </Section>
+
+        <Section title="11. Contact Us">
+          <p>If you would like to access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information, please contact us:</p>
+          <div style={styles.contactBox}>
+            <p style={styles.contactLine}><strong>SixtyPlus Global</strong></p>
+            <p style={styles.contactLine}>Chennai, Tamil Nadu — 600028, India</p>
+            <p style={styles.contactLine}>Email: <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
+            <p style={styles.contactLine}>Phone: <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
+            <p style={styles.contactLine}>WhatsApp: <a href="https://wa.me/919499944939" style={styles.link}>+91 94999 44939</a></p>
           </div>
+        </Section>
 
-          <div className="terms-section">
-            <h2 className="terms-section-title">2. How We Use Your Information</h2>
-            <p className="terms-section-desc">
-              Your information is used to:
-            </p>
-            <ul className="terms-bullet-list">
-              <li>Coordinate care services with licensed professionals</li>
-              <li>communicate with you regarding your parents' care</li>
-              <li>Improve our services and customer experience</li>
-              <li>Comply with legal obligations</li>
-            </ul>
-          </div>
-
-          <div className="terms-section">
-            <h2 className="terms-section-title">3. Data Security</h2>
-            <p className="terms-section-desc">
-              We implement industry-standard security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. All data is stored securely and access is restricted to authorized personnel only.
-            </p>
-          </div>
-
-          <div className="terms-section">
-            <h2 className="terms-section-title">4. Data Sharing</h2>
-            <p className="terms-section-desc">
-              We do not sell or rent your personal information to third parties. We only share your data with:
-            </p>
-            <ul className="terms-bullet-list">
-              <li>Licensed healthcare professionals providing care services</li>
-              <li>Third-party service providers who assist us in delivering services</li>
-              <li>As required by law or legal process</li>
-            </ul>
-          </div>
-
-          <div className="terms-section">
-            <h2 className="terms-section-title">5. Your Rights</h2>
-            <p className="terms-section-desc">
-              You have the right to:
-            </p>
-            <ul className="terms-bullet-list">
-              <li>Access your personal information</li>
-              <li>Request corrections to your data</li>
-              <li>Request deletion of your data</li>
-              <li>Opt-out of marketing communications</li>
-            </ul>
-          </div>
-
-          <div className="terms-section">
-            <h2 className="terms-section-title">6. Contact Us</h2>
-            <p className="terms-section-desc">
-              For any privacy-related inquiries or to exercise your rights, contact us at:
-            </p>
-            <p className="terms-section-desc">
-              <strong>Email:</strong> sixtyplus@care.in<br/>
-              <strong>Phone:</strong> +91 94999 44939
-            </p>
-          </div>
-
-          <div className="terms-page-footer">
-            <Link to="/" className="terms-page-back-btn">
-              ← Back to Home
-            </Link>
+        <div style={styles.footer}>
+          <p>© 2025 SixtyPlus Global. All rights reserved.</p>
+          <div style={styles.footerLinks}>
+            <Link to="/terms-and-conditions" style={styles.footerLink}>Terms &amp; Conditions</Link>
+            <Link to="/" style={styles.footerLink}>Back to Home</Link>
           </div>
         </div>
       </div>
-
-      <style>{`
-        .terms-page {
-          min-height: calc(100vh - 68px);
-          background: #f8f9fa;
-          padding: 40px 20px;
-        }
-        .terms-page-header {
-          background: linear-gradient(135deg, #5B2D8E 0%, #301252 100%);
-          color: white;
-          padding: 60px 20px;
-          text-align: center;
-        }
-        .terms-page-header-content h1 {
-          font-size: 48px;
-          font-weight: 700;
-          margin-bottom: 10px;
-          font-family: 'Lora', serif;
-        }
-        .terms-page-header-content p {
-          font-size: 16px;
-          opacity: 0.8;
-        }
-        .terms-page-content {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 40px 0;
-        }
-        .terms-page-body {
-          background: white;
-          border-radius: 16px;
-          padding: 40px;
-          box-shadow: 0 4px 24px rgba(91, 45, 142, 0.08);
-        }
-        .terms-page-intro {
-          font-size: 16px;
-          line-height: 1.8;
-          color: #4a5568;
-          margin-bottom: 40px;
-          padding-bottom: 30px;
-          border-bottom: 2px solid #e2e8f0;
-        }
-        .terms-section {
-          margin-bottom: 30px;
-        }
-        .terms-section-title {
-          font-size: 22px;
-          font-weight: 700;
-          color: #2d3748;
-          margin-bottom: 12px;
-          padding-left: 20px;
-          border-left: 4px solid #5B2D8E;
-        }
-        .terms-section-desc {
-          font-size: 16px;
-          line-height: 1.7;
-          color: #4a5568;
-        }
-        .terms-bullet-list {
-          margin: 15px 0 0 20px;
-          color: #4a5568;
-        }
-        .terms-bullet-list li {
-          margin-bottom: 10px;
-          line-height: 1.6;
-        }
-        .terms-page-footer {
-          margin-top: 40px;
-          text-align: center;
-        }
-        .terms-page-back-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 14px 28px;
-          background: #5B2D8E;
-          color: white;
-          text-decoration: none;
-          border-radius: 50px;
-          font-weight: 600;
-          font-size: 15px;
-          transition: all 0.3s;
-        }
-        .terms-page-back-btn:hover {
-          background: #301252;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(91, 45, 142, 0.2);
-        }
-        @media (max-width: 768px) {
-          .terms-page-header-content h1 {
-            font-size: 32px;
-          }
-          .terms-page-body {
-            padding: 24px;
-          }
-          .terms-section-title {
-            font-size: 18px;
-          }
-          .terms-section-desc {
-            font-size: 14px;
-          }
-        }
-      `}</style>
     </div>
   );
-};
+}
 
-export default PrivacyPolicyPage;
+function Section({ title, children }) {
+  return (
+    <div style={styles.section}>
+      <h2 style={styles.sectionTitle}>{title}</h2>
+      <div style={styles.sectionBody}>{children}</div>
+    </div>
+  );
+}
+
+const styles = {
+  page: {
+    backgroundColor: '#ffffff',
+    minHeight: '100vh',
+    fontFamily: "'Georgia', 'Times New Roman', serif",
+    color: '#111111',
+  },
+  topBar: {
+    borderBottom: '1px solid #e0e0e0',
+    padding: '14px 40px',
+    backgroundColor: '#fafafa',
+  },
+  backLink: {
+    fontSize: '13px',
+    color: '#444',
+    textDecoration: 'none',
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    letterSpacing: '0.01em',
+  },
+  container: {
+    maxWidth: '760px',
+    margin: '0 auto',
+    padding: '56px 24px 80px',
+  },
+  docHeader: {
+    marginBottom: '48px',
+  },
+  docMeta: {
+    fontSize: '12px',
+    color: '#888',
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+    marginBottom: '12px',
+  },
+  docTitle: {
+    fontSize: '36px',
+    fontWeight: '700',
+    color: '#000',
+    margin: '0 0 18px 0',
+    letterSpacing: '-0.5px',
+    lineHeight: 1.15,
+  },
+  docIntro: {
+    fontSize: '15px',
+    color: '#444',
+    lineHeight: 1.75,
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    marginBottom: '28px',
+  },
+  divider: {
+    borderTop: '2px solid #111',
+    width: '48px',
+    marginTop: '4px',
+  },
+  section: {
+    marginBottom: '40px',
+    paddingBottom: '40px',
+    borderBottom: '1px solid #ebebeb',
+  },
+  sectionTitle: {
+    fontSize: '13px',
+    fontWeight: '700',
+    color: '#000',
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    marginBottom: '14px',
+  },
+  sectionBody: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  },
+  list: {
+    paddingLeft: '20px',
+    margin: '4px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '7px',
+  },
+  contactBox: {
+    border: '1px solid #ddd',
+    borderRadius: '6px',
+    padding: '18px 22px',
+    marginTop: '10px',
+    backgroundColor: '#fafafa',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '5px',
+  },
+  contactLine: {
+    fontSize: '14px',
+    color: '#333',
+    margin: 0,
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+  },
+  link: {
+    color: '#111',
+    textDecoration: 'underline',
+  },
+  footer: {
+    marginTop: '60px',
+    paddingTop: '24px',
+    borderTop: '1px solid #ddd',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: '12px',
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    fontSize: '12px',
+    color: '#999',
+  },
+  footerLinks: {
+    display: 'flex',
+    gap: '24px',
+  },
+  footerLink: {
+    color: '#555',
+    textDecoration: 'none',
+    fontSize: '12px',
+  },
+};
