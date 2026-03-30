@@ -907,6 +907,7 @@ nav.nav-scrolled {
 .ba-label {
   font-size: 9px;
   font-weight: 700;
+  
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--pink);

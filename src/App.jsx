@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import useContactForm from './hooks/useContactForm';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import AdminLayout, { AdminLoginPage } from './pages/AdminDashboard';
 
 const heroSlideImages = [
   'public/hero/innerbanner-1.png',
@@ -630,13 +631,14 @@ const Footer = () => (
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={
-        <>
+  <Route path="/admin/*" element={<AdminLayout />} />
+  <Route path="/" element={<>
           <Nav />
           <WaFloat />
           <ConsultFAB />
           <main>
             <Hero />
+           
             <Services />
             <WhyAndForm />
             <Statistics />
@@ -646,10 +648,9 @@ export default function App() {
             <FAQ />
           </main>
           <Footer />
-        </>
-      } />
-      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-    </Routes>
+        </>} />
+  <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+</Routes>
   );
-}
+} 
