@@ -6,10 +6,10 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import AdminLayout, { AdminLoginPage } from './pages/AdminDashboard';
 
 const heroSlideImages = [
-  'public/hero/innerbanner-1.png',
-  'public/hero/Mahadevan_Sitting2_LJ_India.jpg',
-  'public/hero/old%20person6.jpg',
-  'public/hero/caretender.jpg',
+  'hero/innerbanner-1.png',
+  'hero/Mahadevan_Sitting2_LJ_India.jpg',
+  'hero/old%20person6.jpg',
+  'hero/caretender.jpg',
 ];
 
 
@@ -79,7 +79,7 @@ const Nav = () => {
     <>
       <nav className={scrolled ? 'nav-scrolled' : ''}>
         <div className="nav-logo">
-          <img src="/so.png" alt="SixtyPlus Global" />
+          <img src="so.png" alt="SixtyPlus Global" />
           {/* <span>SixtyPlus Global</span> */}
         </div>
         <div className="nav-links">
@@ -242,7 +242,7 @@ const Services = () => {
       <div className="services-closing">
         <p>
           We take care of everything — with attention, coordination, and regular follow-ups.<br />
-          <span class="services-closing-sub">So you can stay reassured.</span>
+          <span className="services-closing-sub">So you can stay reassured.</span>
         </p>
         <a href="#consult-form" className="services-cta">See How It Works →</a>
       </div>
@@ -258,7 +258,7 @@ const WhyAndForm = () => {
       <span id="consult" style={{ display: 'block', visibility: 'hidden', height: 0 }} />
       <div className="ba-strip">
         <div className="ba-panel">
-          <img src="public/lonely_old_man.jpg" alt="Elderly man alone" />
+          <img src="lonely_old_man.jpg" alt="Elderly man alone" />
           <div className="ba-overlay ba-dark">
             <p className="ba-quote">He sits by the window.<br />Counting hours. Counting days.</p>
             <p className="ba-tamil tamil">அவர்கள் ஜன்னலருகே அமைதியாக காத்திருக்கிறார்கள்… யாராவது வருவார்களா என்று.</p>
@@ -266,7 +266,7 @@ const WhyAndForm = () => {
         </div>
         <div className="ba-arrow">→</div>
         <div className="ba-panel">
-          <img src="public/errands1.jpg" alt="Caretaker with elderly" style={{ objectPosition: 'center 20%' }} />
+          <img src="errands1.jpg" alt="Caretaker with elderly" style={{ objectPosition: 'center 20%' }} />
           <div className="ba-overlay ba-hope">
             <p className="ba-quote">She smiles again.<br />Feels cared for every day.</p>
             <p className="ba-tamil tamil">அவர்கள் மீண்டும் சிரிக்க ஆரம்பிக்கிறார்கள்… யாரோ அக்கறையுடன் இருக்கிறார்கள்.</p>
@@ -442,7 +442,7 @@ const CompleteCare = () => {
         <div className="care-image-panel">
           <div className="care-image-wrapper">
             <img
-              src="public/complete.jpg"
+              src="complete.jpg"
               alt="Caregiver providing compassionate care to elderly person"
               className="care-image"
             />
@@ -479,7 +479,7 @@ const CompleteCare = () => {
       <div className="care-highlight-box">
         <div className="highlight-content">
           <p className="highlight-text">
-            We support your parents' care with attention, coordination, and regular follow-ups — so you can stay reassured.
+           We take care of everything — so you don’t have to manage it from miles away.
           </p>
           <a href="#consult-form" className="care-highlight-cta">
             Talk to a Care Expert
@@ -509,32 +509,13 @@ const CompetitiveAdvantage = () => (
       <div className="section-line" />
     </div>
 
-    <div className="adv-content-grid">
-      <div className="adv-features-grid">
-        {advData.map((a, i) => (
-          <div className={`adv-card adv-card-${i === 0 || i === 2 ? 'large' : 'small'}`} key={i}>
-            <div className="adv-icon">
-              {i === 0 && <span>👤</span>}
-              {i === 1 && <span>🕐</span>}
-              {i === 2 && <span>🌍</span>}
-              {i === 3 && <span>🏥</span>}
-            </div>
-            <div className="adv-top">
-              <div className="adv-tag">{a.tag}</div>
-              <div className="adv-title tamil">{a.title}</div>
-            </div>
-            <div className="adv-body"><p>{a.desc}</p></div>
-          </div>
-        ))}
-      </div>
-
-      <div className="adv-testimonial-highlight">
-        <div className="testimonial-main">
-          <div className="testi-rating">⭐⭐⭐⭐⭐</div>
-          <p className="testi-quote-main">"60Plus made me feel like I'm right there with my parents in Chennai, even from London."</p>
-          <div className="testi-author">— Rajesh, London-based son</div>
+    <div className="adv-grid">
+      {advData.map((a, i) => (
+        <div className="adv-card" key={i}>
+          <div className="adv-top"><div className="adv-tag">{a.tag}</div><div className="adv-title tamil">{a.title}</div></div>
+          <div className="adv-body"><p>{a.desc}</p></div>
         </div>
-      </div>
+      ))}
     </div>
 
     <div className="adv-h-scroll h-scroll-wrap">
@@ -674,7 +655,7 @@ const Footer = () => (
     <div className="footer-top">
       <div className="footer-brand">
         <div className="footer-logo-row">
-          <img src="/so.png" alt="SixtyPlus Global" />
+          <img src="so.png" alt="SixtyPlus Global" />
           <div><h4>SixtyPlus Global</h4><p>Helping you care for your parents — even from miles away.</p></div>
         </div>
         <p className="footer-tagline">Caring for the ones who cared for you.</p>
@@ -704,14 +685,14 @@ const Footer = () => (
         <span className="footer-availability">Available 24/7 for urgent support</span>
       </div>
     </div>
-    <div className="footer-cta">
+    {/* <div className="footer-cta">
           <div className="footer-cta-content">
             <h3>Still thinking about your parents?</h3>
             <p>Speak to a care expert today.</p>
             <a href="#consult-form" className="footer-cta-btn">Talk to Us Now</a>
             <p className="footer-cta-sub">No pressure. Just guidance.</p>
           </div>
-        </div>
+        </div> */}
     <div className="footer-bottom">
       <p>© 2025 SixtyPlus Global. All rights reserved.</p>
       <div className="footer-bottom-links">
@@ -719,7 +700,7 @@ const Footer = () => (
         <a href="/privacy-policy" className="footer-link-btn">Privacy Policy</a>
       </div>
     </div>
-    <div className="footer-bottom-line">Because they cared for you first.</div>
+    {/* <div className="footer-bottom-line">Because they cared for you first.</div> */}
   </footer>
 );
 
