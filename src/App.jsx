@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import useContactForm from './hooks/useContactForm';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import AdminLayout, { AdminLoginPage } from './pages/AdminDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import { trackCtaClick } from './lib/firebase';
 
 const heroSlideImages = [
   'hero/innerbanner-1.png',
@@ -332,7 +333,7 @@ const WhyAndForm = () => {
                 </select>
                 {errors.mobility && <span className="error-msg">{errors.mobility}</span>}
               </div>
-              <button type="submit" className="form-submit" disabled={loading}>{loading ? 'Submitting…' : 'Talk to a Care Expert Today'}</button>
+              <button type="submit" className="form-submit" disabled={loading} onClick={() => trackCtaClick('form_submit_button')}>{loading ? 'Submitting…' : 'Talk to a Care Expert Today'}</button>
               <p className="form-note">No spam. No pressure. 100% confidential.<br />Protected by reCAPTCHA — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Privacy</a> & <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Terms</a></p>
             </form>
           )}
@@ -708,7 +709,7 @@ const Footer = () => (
 export default function App() {
   return (
     <Routes>
-  <Route path="/admin/*" element={<AdminLayout />} />
+  <Route path="/admin/*" element={<AdminDashboard />} />
   <Route path="/" element={<>
           <Nav />
           <WaFloat />
