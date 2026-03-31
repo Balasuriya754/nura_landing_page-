@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import useContactForm from './hooks/useContactForm';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import AdminLayout, { AdminLoginPage } from './pages/AdminDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import { trackCtaClick } from './lib/firebase';
 
 const heroSlideImages = [
   'public/hero/innerbanner-1.png',
@@ -62,7 +63,7 @@ const ConsultFAB = () => {
     return () => window.removeEventListener('scroll', fn);
   }, []);
   return (
-    <a href="#consult" className={`consult-fab ${visible ? 'consult-fab--on' : ''}`} aria-label="Free Consultation">
+    <a href="#consult" className={`consult-fab ${visible ? 'consult-fab--on' : ''}`} aria-label="Free Consultation" onClick={() => trackCtaClick('consult_fab')}>
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.07 2.18 2 2 0 012.05 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
       </svg>
@@ -92,7 +93,7 @@ const Nav = () => {
         <div className="nav-links">
           {links.map((l, i) => <a key={l} href={hrefs[i]}>{l}</a>)}
         </div>
-        <a href="#consult" className="nav-cta">Talk to Us</a>
+        <a href="#consult" className="nav-cta" onClick={() => trackCtaClick('nav_talk_to_us')}>Talk to Us</a>
         <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span /><span />
         </div>
@@ -153,7 +154,7 @@ const Hero = () => {
             ))}
           </div>
           <div className="hero-btns">
-            <a href="#consult" className="btn-primary">Get Free Consultation</a>
+            <a href="#consult" className="btn-primary" onClick={() => trackCtaClick('hero_free_consultation')}>Get Free Consultation</a>
             <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21"
               className="btn-wa" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -296,7 +297,7 @@ const WhyAndForm = () => {
                 </select>
                 {errors.mobility && <span className="error-msg">{errors.mobility}</span>}
               </div>
-              <button type="submit" className="form-submit" disabled={loading}>{loading ? 'Submitting…' : 'Talk to a Care Expert Today'}</button>
+              <button type="submit" className="form-submit" disabled={loading} onClick={() => trackCtaClick('form_submit_button')}>{loading ? 'Submitting…' : 'Talk to a Care Expert Today'}</button>
               <p className="form-note">No spam. No pressure. 100% confidential.<br />Protected by reCAPTCHA — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Privacy</a> & <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Terms</a></p>
             </form>
           )}
@@ -361,7 +362,7 @@ const Statistics = () => (
         <blockquote>"In Tamil Nadu, 1 in 3 elders lives alone. Their silence is not peace — it's the absence of someone to call."</blockquote>
         <cite>— Geriatric Care Research, Tamil Nadu 2024</cite>
       </div>
-      <a href="#consult" className="stats-banner-cta">Be That Someone →</a>
+      <a href="#consult" className="stats-banner-cta" onClick={() => trackCtaClick('stats_be_that_someone')}>Be That Someone →</a>
     </div>
     {/* Quote embedded — leads into All Services */}
     <QuoteStrip
@@ -535,7 +536,7 @@ const Pricing = () => {
               </div>
             ))}
           </div>
-          <a href="#consult" className="pkg-cta">Enroll Now — $50/month</a>
+          <a href="#consult" className="pkg-cta" onClick={() => trackCtaClick('pricing_enroll_now')}>Enroll Now — $50/month</a>
           <p className="pkg-sub-cta">Or WhatsApp: <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">+91 94999 44939</a></p>
         </div>
       </div>
@@ -577,7 +578,7 @@ const FAQ = () => {
       <div className="faq-finale">
         <p className="faq-finale-tamil tamil">"இன்று ஒரு அழைப்பு. அவர்களுக்கு ஒரு புதிய வாழ்க்கை."</p>
         <p className="faq-finale-eng">"One call today. A new life for them."</p>
-        <a href="#consult" className="faq-finale-btn">Get Your Free Consultation</a>
+        <a href="#consult" className="faq-finale-btn" onClick={() => trackCtaClick('faq_free_consultation')}>Get Your Free Consultation</a>
       </div>
     </section>
   );
@@ -631,7 +632,7 @@ const Footer = () => (
 export default function App() {
   return (
     <Routes>
-  <Route path="/admin/*" element={<AdminLayout />} />
+  <Route path="/admin/*" element={<AdminDashboard />} />
   <Route path="/" element={<>
           <Nav />
           <WaFloat />

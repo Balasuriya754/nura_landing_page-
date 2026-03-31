@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://delaney-actinolitic-incapably.ngrok-free.dev';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8300';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -66,12 +66,15 @@ export const formsApi = {
   },
 
   submitForm: async (formId, formData, recaptchaToken = null, captchaType = null) => {
-    const payload = { ...formData };
+    const payload = {
+      form_id: formId,
+      ...formData,
+    };
     if (recaptchaToken) {
       payload.recaptcha_token = recaptchaToken;
       payload.captcha_type = captchaType;
     }
-    const response = await api.post(`/v1/forms/${formId}/submit`, payload);
+    const response = await api.post('/v1/core/landingPageFormSubmit', payload);
     return response.data;
   },
 };

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { trackFormSubmit } from '../lib/firebase';
 
 const FORM_ID = import.meta.env.VITE_FORM_ID || '60plus_global_form';
 
@@ -153,6 +154,12 @@ const useContactForm = (initialValues = DEFAULT_INITIAL_VALUES) => {
         console.log('Submitting to backend:', API_URL, payload);
         const response = await sendToBackend(payload);
         console.log('Form submission response:', response);
+
+        // Track successful form submission in Firebase Analytics
+        trackFormSubmit('contact_form', {
+          form_id: FORM_ID,
+          location: formData.location,
+        });
 
         setSubmitted(true);
         setFormData(DEFAULT_INITIAL_VALUES);
