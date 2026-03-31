@@ -7,19 +7,12 @@ import AdminDashboard from './pages/AdminDashboard';
 import { trackCtaClick } from './lib/firebase';
 
 const heroSlideImages = [
-  'public/hero/innerbanner-1.png',
-  'public/hero/Mahadevan_Sitting2_LJ_India.jpg',
-  'public/hero/old%20person6.jpg',
-  'public/hero/caretender.jpg',
+  'hero/innerbanner-1.png',
+  'hero/Mahadevan_Sitting2_LJ_India.jpg',
+  'hero/old%20person6.jpg',
+  'hero/caretender.jpg',
 ];
 
-const collageScrollImages = [
-  'public/hero/innerbanner-1.png',
-  'public/hero/Mahadevan_Sitting2_LJ_India.jpg',
-  
-  'public/hero/old%20person6.jpg',
-  'public/hero/caretender.jpg',
-];
 
 /* ─── Inline quote strip — embedded inside sections ─── */
 const QuoteStrip = ({ tamil, english, type = 'guilt' }) => (
@@ -55,22 +48,22 @@ const WaFloat = () => {
 };
 
 /* ─── Consult FAB ─── */
-const ConsultFAB = () => {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const fn = () => setVisible(window.scrollY > 400);
-    window.addEventListener('scroll', fn, { passive: true });
-    return () => window.removeEventListener('scroll', fn);
-  }, []);
-  return (
-    <a href="#consult" className={`consult-fab ${visible ? 'consult-fab--on' : ''}`} aria-label="Free Consultation" onClick={() => trackCtaClick('consult_fab')}>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.07 2.18 2 2 0 012.05 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-      </svg>
-      <span>Free Consult</span>
-    </a>
-  );
-};
+// const ConsultFAB = () => {
+//   const [visible, setVisible] = useState(false);
+//   useEffect(() => {
+//     const fn = () => setVisible(window.scrollY > 400);
+//     window.addEventListener('scroll', fn, { passive: true });
+//     return () => window.removeEventListener('scroll', fn);
+//   }, []);
+//   return (
+//     <a href="#consult-form" className={`consult-fab ${visible ? 'consult-fab--on' : ''}`} aria-label="Free Consultation">
+//       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+//         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.07 2.18 2 2 0 012.05 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+//       </svg>
+//       <span>Free Consult</span>
+//     </a>
+//   );
+// };
 
 /* ─── NAV ─── */
 const Nav = () => {
@@ -87,20 +80,20 @@ const Nav = () => {
     <>
       <nav className={scrolled ? 'nav-scrolled' : ''}>
         <div className="nav-logo">
-          <img src="/so.png" alt="SixtyPlus Global" />
-          <span>SixtyPlus Global</span>
+          <img src="so.png" alt="SixtyPlus Global" />
+          {/* <span>SixtyPlus Global</span> */}
         </div>
         <div className="nav-links">
           {links.map((l, i) => <a key={l} href={hrefs[i]}>{l}</a>)}
         </div>
-        <a href="#consult" className="nav-cta" onClick={() => trackCtaClick('nav_talk_to_us')}>Talk to Us</a>
+        <a href="#consult-form" className="nav-cta">Talk to Us</a>
         <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span /><span />
         </div>
       </nav>
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         {links.map((l, i) => <a key={l} href={hrefs[i]} onClick={() => setMenuOpen(false)}>{l}</a>)}
-        <a href="#consult" className="mob-cta" onClick={() => setMenuOpen(false)}>Talk to Us</a>
+        <a href="#consult-form" className="mob-cta" onClick={() => setMenuOpen(false)}>Talk to Us</a>
       </div>
     </>
   );
@@ -130,23 +123,23 @@ const Hero = () => {
                 onClick={() => setActiveSlide(i)} aria-label={`Slide ${i + 1}`} />
             ))}
           </div>
-          {/* <div className="hero-chip">
-            <span className="chip-pulse" />
-            50,000+ families served across Tamil Nadu
-          </div> */}
         </div>
         <div className="hero-content">
-          <span className="hero-eyebrow">India's #1 Emerging Senior Care Platform</span>
+          <span className="hero-eyebrow">Trusted by 50,000+ families across Tamil Nadu</span>
           <h1 className="hero-h1">
-            Your Parents Might Be<br /><em>Hiding Something</em> From You.
+            When You're Away<br /> Who's <em>Taking Care</em> of Your <em>Parents?</em>
           </h1>
           <div className="hero-quote">
-            <span className="hq-label">What families say</span>
-            <p className="hq-tamil tamil">"அம்மா வாய்ல 'நல்லா இருக்கேன்'னு சொல்றாங்க… கண்ணு வேற ஒண்ணு சொல்லுது."</p>
-            <p className="hq-eng">"Mom says she's fine… but her eyes tell a different story."</p>
+            <p className="hq-tamil tamil">"நீங்கள் அருகில் இல்லாத நேரங்களில் அவர்கள் தனியாக இருக்கலாம்…
+நாங்கள் அவர்களுடன் இருக்கிறோம் — நீங்கள் நிம்மதியாக இருக்கலாம்."</p>
+            <p className="hq-eng">Trusted in-home care, regular check-ins, and support — so your parents are never alone.</p>
           </div>
           <div className="hero-stats-row">
-            {[['50,000+', 'Families'], ['600+', 'Doctors'], ['100+', 'Tests']].map(([n, l]) => (
+            {[
+              ['50,000+', 'Families we serve'],
+              ['600+', 'Doctors in network'],
+              ['100+', 'Care services']
+            ].map(([n, l]) => (
               <div key={l} className="hstat">
                 <div className="hstat-num">{n}</div>
                 <div className="hstat-lbl">{l}</div>
@@ -154,15 +147,20 @@ const Hero = () => {
             ))}
           </div>
           <div className="hero-btns">
-            <a href="#consult" className="btn-primary" onClick={() => trackCtaClick('hero_free_consultation')}>Get Free Consultation</a>
-            <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21"
+            <a href="#consult-form" className="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.17-6.17 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Talk to a Care Expert →
+            </a>
+            {/* <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21"
               className="btn-wa" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
                 <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/>
               </svg>
-              WhatsApp Us
-            </a>
+              WhatsApp Us 
+            </a> */}
           </div>
         </div>
       </div>
@@ -171,49 +169,87 @@ const Hero = () => {
 };
 
 /* ─── SERVICES ─── */
-const servicesData = [
-  { img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', title: '24x7 Emergency Support', desc: 'One call away at any hour. Real people, real response.' },
-  { img: 'public/doctor2.jpg', title: 'Doctor Home Visits', desc: 'Qualified doctors come to your parents — no travel stress, no waiting rooms.' },
-   { img: 'public/ai-companion.jpg', title: 'Companion AI', desc: 'AI-powered conversation and safety monitoring around the clock.' },
-   { img: 'public/grabbar.jpg', title: 'Senior-Safe Home', desc: 'Safety modifications so your parent never fears falling again.' },
-  { img: 'public/physio_3.jpg', title: 'Physiotherapy & Rehab', desc: 'Professional physiotherapists support recovery right at home.' },
-  { img: 'public/home_nurse_4.jpg', title: 'Nurse Assistance', desc: 'Trained nurses for daily medication, wound care, and comfort.' },
-  
-  { img: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&q=80', title: 'Medicine Management', desc: 'Timely reminders and full medication tracking — nothing missed.' },
- 
-  { img: 'public/online_doctor.jpg', title: 'Online Consultations', desc: 'Video consultations with specialists from the comfort of home.' },
-  
+const servicesGroups = [
+  {
+    title: 'Daily Support',
+    items: [
+      { icon: 'heart', title: 'Assisted Daily Care', desc: 'Scheduled visits for hygiene, mobility, and basic care' },
+      { icon: 'pill', title: 'Medication Support', desc: 'Reminders and tracking to ensure medicines are taken on time' },
+      { icon: 'phone', title: 'Regular Well-being Check-ins', desc: 'Periodic calls or visits to stay updated on well-being' }
+    ]
+  },
+  {
+    title: 'Medical Support',
+    items: [
+      { icon: 'doctor', title: 'Doctor Visits at Home', desc: 'Arrange consultations at home based on availability' },
+      { icon: 'activity', title: 'Physiotherapy', desc: 'Guided sessions from certified professionals' },
+      { icon: 'video', title: 'Online Consultation', desc: 'Connect with doctors remotely for quick medical advice' }
+    ]
+  },
+  {
+    title: 'Safety & Monitoring',
+    items: [
+      { icon: 'alert', title: '24/7 Emergency Support', desc: 'Round-the-clock assistance coordination for urgent needs' },
+      { icon: 'home', title: 'Home Safety Guidance', desc: 'Recommendations to make your home safer and reduce risks' },
+      { icon: 'bell', title: 'Well-being Alerts', desc: 'Get regular updates on your parents’ well-being' }
+    ]
+  }
 ];
 
-const Services = () => (
-  <section className="services-section" id="services">
-    <div className="section-header">
-      <div className="section-tag">What We Offer</div>
-      <h2 className="section-title">Everything They Need.<br />Delivered to Their Door.</h2>
-      <p className="section-sub">You can't always be there. We make sure someone always is.</p>
-      <div className="section-line" />
-    </div>
-    <div className="services-grid">
-      {servicesData.map((svc, i) => (
-        <div className="service-card" key={i}>
-          <div className="svc-img-wrap"><img src={svc.img} alt={svc.title} className="svc-img" /></div>
-          <div className="svc-body"><h4>{svc.title}</h4><p>{svc.desc}</p></div>
-        </div>
-      ))}
-    </div>
-    <div className="svc-h-scroll h-scroll-wrap">
-      <div className="h-scroll-inner">
-        {servicesData.map((svc, i) => (
-          <div className="svc-h-card" key={i}>
-            <div className="svc-img-wrap"><img src={svc.img} alt={svc.title} className="svc-img" /></div>
-            <div className="svc-body"><h4>{svc.title}</h4><p>{svc.desc}</p></div>
+const Services = () => {
+  const getIcon = (name) => {
+    const icons = {
+      heart: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>,
+      pill: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></svg>,
+      phone: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.17-6.17 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>,
+      doctor: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M12 5 9.04 17h1.92L12 5Z" /></svg>,
+      activity: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
+      video: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 8-6 4 6 4V8Z" /><rect width="14" height="12" x="2" y="6" rx="2" ry="2" /></svg>,
+      alert: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" x2="12" y1="8" y2="12" /><line x1="12" x2="12.01" y1="16" y2="16" /></svg>,
+      home: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>,
+      bell: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+    };
+    return icons[name] || null;
+  };
+
+  return (
+    <section className="services-section" id="services">
+      <div className="section-header">
+        <div className="section-tag">Everything Your Parents Need — In One Place</div>
+        <h2 className="section-title">Complete Care for Your Parents —<br />At Home</h2>
+        <p className="section-sub">Flexible support based on your parents' needs — from daily assistance to medical help.</p>
+        <div className="section-line" />
+      </div>
+      <div className="services-groups"> 
+        {servicesGroups.map((group, gIndex) => (
+          <div className="services-group" key={group.title}>
+            <h3 className="services-group-title">{group.title}</h3>
+            <div className="services-grid-group">
+              {group.items.map((item, i) => (
+                <div className="service-card-icon" key={i}>
+                  <div className="svc-icon-wrap">
+                    {getIcon(item.icon)}
+                  </div>
+                  <div className="svc-body-icon">
+                    <h4>{item.title}</h4>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
-    </div>
-    {/* End Services */}
-  </section>
-);
+      <div className="services-closing">
+        <p>
+          We take care of everything — with attention, coordination, and regular follow-ups.<br />
+          <span className="services-closing-sub">So you can stay reassured.</span>
+        </p>
+        <a href="#consult-form" className="services-cta">See How It Works →</a>
+      </div>
+    </section>
+  );
+};
 
 /* ─── WHY + FORM ─── */
 const WhyAndForm = () => {
@@ -223,45 +259,45 @@ const WhyAndForm = () => {
       <span id="consult" style={{ display: 'block', visibility: 'hidden', height: 0 }} />
       <div className="ba-strip">
         <div className="ba-panel">
-          <img src="public/lonely_old_man.jpg" alt="Elderly man alone" />
+          <img src="lonely_old_man.jpg" alt="Elderly man alone" />
           <div className="ba-overlay ba-dark">
-            <span className="ba-label">Without 60Plus</span>
             <p className="ba-quote">He sits by the window.<br />Counting hours. Counting days.</p>
-            <p className="ba-tamil tamil">உங்கள் அப்பா உங்களுக்காக காத்திருக்கிறார்.</p>
+            <p className="ba-tamil tamil">அவர்கள் ஜன்னலருகே அமைதியாக காத்திருக்கிறார்கள்… யாராவது வருவார்களா என்று.</p>
           </div>
         </div>
         <div className="ba-arrow">→</div>
         <div className="ba-panel">
-          <img src="public/errands1.jpg" alt="Caretaker with elderly" style={{ objectPosition: 'center 20%' }} />
+          <img src="errands1.jpg" alt="Caretaker with elderly" style={{ objectPosition: 'center 20%' }} />
           <div className="ba-overlay ba-hope">
-            <span className="ba-label">With 60Plus</span>
-            <p className="ba-quote">She smiles when the doctor visits.<br />She laughs again.</p>
-            <p className="ba-tamil tamil">அவங்க முகத்துல சிரிப்பு திரும்பும்.</p>
+            <p className="ba-quote">She smiles again.<br />Feels cared for every day.</p>
+            <p className="ba-tamil tamil">அவர்கள் மீண்டும் சிரிக்க ஆரம்பிக்கிறார்கள்… யாரோ அக்கறையுடன் இருக்கிறார்கள்.</p>
           </div>
         </div>
+      </div>
+      <div className="ba-connector">
+        <p>We make sure your parents are never alone.</p>
       </div>
       <div className="why-inner">
         <div className="why-left">
           <div className="section-tag">Why Choose Us</div>
-          <h2>Why Tamil Families<br />Trust 60Plus Global</h2>
-          <div className="accent-line" />
-          <p>Silence and withdrawal are signs. We step in before it's too late — with medical care, emotional support, and a human who actually cares.</p>
+          <h2>Trusted by Tamil Families, Built for Their Care</h2>
+          <p>Caring for parents isn't just about services — it's about consistency, trust, and knowing someone is always there when you can't be.</p>
           <div className="benefit-list">
-            {['Psychologist & Psychiatrist Consultations', 'Emotional Support for Ageing Parents', 'Online & In-Person Sessions Available', 'Dedicated Care Manager for Your Family', 'Tamil-speaking Care Professionals', 'Trusted by NRI Families Globally'].map((item, i) => (
+            {['Dedicated care coordinator for your family', 'Verified and trusted care professionals', 'Regular updates so you stay informed', 'Flexible support based on changing needs', 'Tamil-speaking team for clear communication', 'Trusted by families across Tamil Nadu and beyond'].map((item, i) => (
               <div className="benefit-item" key={i}>
                 <div className="benefit-check">✓</div>
                 <span>{item}</span>
               </div>
             ))}
           </div>
-          <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" className="wa-btn" target="_blank" rel="noopener noreferrer">
+          {/* <a href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21" className="wa-btn" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/></svg>
             WhatsApp Us Now
-          </a>
-          <div className="wa-num">+91 94999 44939</div>
+          </a> */}
+          {/* <div className="wa-num">+91 94999 44939</div> */}
         </div>
-        <div className="form-box">
-          <div className="form-header"><h3>Get a Free Consultation</h3><p>Our care manager will call you within 24 hours</p></div>
+        <div className="form-box" id="consult-form">
+          <div className="form-header"><h3>Speak with a Care Expert</h3><p>Get personalized guidance within 24 hours</p></div>
           {submitted ? (
             <div className="form-success">
               <div className="form-success-icon">✓</div>
@@ -318,14 +354,6 @@ const Statistics = () => (
   <section className="stats-section" id="stats">
     <div className="stats-bg" />
 
-    {/* ── Sentimental old man figure ── */}
-    <img
-      src="/public/old%20person%20transparent.png"
-      alt=""
-      className="stats-figure"
-      aria-hidden="true"
-    />
-
     <div className="section-header" style={{ position: 'relative', zIndex: 1 }}>
       <div className="section-tag">The Reality</div>
       <h2 className="section-title">The Silent Crisis No One<br />Is Talking About</h2>
@@ -357,85 +385,114 @@ const Statistics = () => (
       </div>
     </div>
     <div className="stats-banner" style={{ position: 'relative', zIndex: 1 }}>
-      <div className="stats-banner-img"><img src="public/pension.jpg" alt="Senior" /></div>
-      <div className="stats-banner-quote">
+      <div className="stats-banner-content">
         <blockquote>"In Tamil Nadu, 1 in 3 elders lives alone. Their silence is not peace — it's the absence of someone to call."</blockquote>
         <cite>— Geriatric Care Research, Tamil Nadu 2024</cite>
       </div>
-      <a href="#consult" className="stats-banner-cta" onClick={() => trackCtaClick('stats_be_that_someone')}>Be That Someone →</a>
+      <a href="#consult-form" className="stats-banner-cta">Start Care Today →</a>
     </div>
-    {/* Quote embedded — leads into All Services */}
-    <QuoteStrip
-      tamil='"புள்ளிவிவரங்கள் சொல்வதை நம்புங்கள். ஆனால் செயல்படுவது உங்கள் கையில்."'
-      english={`"Believe what the numbers say. But acting on it — that's in your hands."`}
-      type="guilt"
-    />
   </section>
 );
 
-/* ─── ALL SERVICES ─── */
-const allSvcList = [
-  'Doctor Home Visits', 'Emotional & Mental Health Support',
-  'Medicine Management & Reminders', 'Blood Tests at Home',
-  '24x7 Emergency Response', 'Companion AI — Always On',
-  'Senior Citizen Medical Insurance', 'Digitalisation of Medical Records',
-  'Home Safety Modifications', 'Free Senior Community',
-];
+/* ─── COMPLETE CARE SECTION ─── */
+const CompleteCare = () => {
+  const careGroups = [
+    {
+      title: 'Medical Care',
+      items: [
+        'Doctor visits at home',
+        'Blood tests & diagnostics',
+        'Insurance coordination'
+      ]
+    },
+    {
+      title: 'Daily Support',
+      items: [
+        'Medication reminders',
+        'Mobility & hygiene assistance',
+        'Home safety improvements'
+      ]
+    },
+    {
+      title: 'Emotional Well-being',
+      items: [
+        'Mental health support',
+        'Regular check-ins',
+        'Friendly companionship'
+      ]
+    },
+    {
+      title: 'Emergency & Monitoring',
+      items: [
+        '24/7 emergency coordination',
+        'Real-time alerts & updates'
+      ]
+    }
+  ];
 
-const CollageSlider = () => {
-  const [activeImg, setActiveImg] = useState(0);
-  const ivRef = useRef(null);
-  useEffect(() => {
-    ivRef.current = setInterval(() => setActiveImg(s => (s + 1) % collageScrollImages.length), 3500);
-    return () => clearInterval(ivRef.current);
-  }, []);
-  const goTo = (i) => {
-    setActiveImg(i);
-    clearInterval(ivRef.current);
-    ivRef.current = setInterval(() => setActiveImg(s => (s + 1) % collageScrollImages.length), 3500);
-  };
   return (
-    <div className="collage-wrap">
-      <div className="collage-corner tl" />
-      <div className="collage-corner br" />
-      <div className="collage-badge"><strong>10+</strong><span>Services Included</span></div>
-      <div className="collage-frame">
-        <div className="collage-track" style={{ transform: `translateX(-${activeImg * 100}%)` }}>
-          {collageScrollImages.map((src, i) => (
-            <div className="collage-slide" key={i}><img src={src} alt={`Care ${i + 1}`} /></div>
-          ))}
+    <section className="complete-care-section">
+      <div className="section-header">
+        <div className="section-tag">COMPLETE CARE</div>
+        <h2 className="section-title max-w-2xl mx-auto">One Membership. Everything They Need.</h2>
+        <p className="section-sub">No coordination. No multiple providers.<br />One simple plan that covers your parents' daily, medical, and emotional care.</p>
+        <div className="section-line" />
+      </div>
+
+      <div className="complete-care-inner">
+        <div className="care-image-panel">
+          <div className="care-image-wrapper">
+            <img
+              src="complete.jpg"
+              alt="Caregiver providing compassionate care to elderly person"
+              className="care-image"
+            />
+          </div>
+        </div>
+
+        <div className="care-benefits-panel">
+          <div className="care-benefits-grid">
+            {careGroups.map((group, index) => (
+              <div className="care-benefit-group" key={index}>
+                <div className="benefit-group-header">
+                  <div className="benefit-group-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg>
+                  </div>
+                  <h4 className="benefit-group-title">{group.title}</h4>
+                </div>
+                <ul className="benefit-list">
+                  {group.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="benefit-item">
+                      <span className="benefit-check">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="collage-dots">
-        {collageScrollImages.map((_, i) => (
-          <button key={i} className={`collage-dot ${i === activeImg ? 'active' : ''}`} onClick={() => goTo(i)} />
-        ))}
+
+      <div className="care-highlight-box">
+        <div className="highlight-content">
+          <p className="highlight-text">
+           We take care of everything — so you don’t have to manage it from miles away.
+          </p>
+          <a href="#consult-form" className="care-highlight-cta">
+            Talk to a Care Expert
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
-
-const AllServices = () => (
-  <section className="allsvc-section">
-    <div className="section-header">
-      <div className="section-tag">Complete Care</div>
-      <h2 className="section-title">One Membership.<br />Everything They Deserve.</h2>
-      <p className="section-sub">Stop piecing together partial solutions. One plan covers it all.</p>
-      <div className="section-line" />
-    </div>
-    <div className="allsvc-inner">
-      <CollageSlider />
-      <div className="allsvc-list">
-        {allSvcList.map((svc, i) => (
-          <div className="svc-item" key={i}>
-            <div className="svc-check">✓</div>
-            <span>{svc}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
 /* ─── COMPETITIVE ADVANTAGE ─── */
 const advData = [
@@ -449,9 +506,10 @@ const CompetitiveAdvantage = () => (
   <section className="adv-section">
     <div className="section-header">
       <div className="section-tag">Our Difference</div>
-      <h2 className="section-title">Why 60Plus Global.<br />Not Anyone Else.</h2>
+      <h2 className="section-title">Why Families Trust 60Plus Global<br />With Their Parents' Care</h2>
       <div className="section-line" />
     </div>
+
     <div className="adv-grid">
       {advData.map((a, i) => (
         <div className="adv-card" key={i}>
@@ -460,6 +518,7 @@ const CompetitiveAdvantage = () => (
         </div>
       ))}
     </div>
+
     <div className="adv-h-scroll h-scroll-wrap">
       <div className="h-scroll-inner">
         {advData.map((a, i) => (
@@ -470,33 +529,24 @@ const CompetitiveAdvantage = () => (
         ))}
       </div>
     </div>
-    <div className="testi-grid">
-      {[
-        { img: 'public/errands1.jpg', quote: "I live in London. 60Plus made me feel like I'm right there with my parents in Chennai." },
-        { img: 'public/hero_old_person6.jpg', quote: 'அம்மா இப்போ மருத்துவர் வீட்டுக்கு வருவாங்க. நான் கவலைப்பட வேண்டியதில்லை.' },
-        { img: 'public/caretender.jpg', quote: "The care manager knows my father's name, his habits, his medicines. That personal care is rare." },
-      ].map((t, i) => (
-        <div className="testi-card" key={i}>
-          <div className="testi-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-          <div className="testi-body">
-            <p>"{t.quote}"</p>
-            <div className="testi-meta">{t.loc && <span>{t.loc}</span>}</div>
-          </div>
-        </div>
-      ))}
+
+    <div className="adv-quote-section">
+      <QuoteStrip
+        tamil='"அவர்களுக்கு நீங்கள் கடந்த காலத்தை திரும்ப கொடுக்க முடியாது. ஆனால் நிகழ்காலத்தை கொடுக்கலாம்."'
+        english={`"You can't give back the past. But you can give them the present."`}
+        type="guilt"
+      />
     </div>
-    {/* Quote leads into Pricing */}
-    <QuoteStrip
-      tamil='"அவர்களுக்கு நீங்கள்  கடந்த காலத்தை திரும்ப கொடுக்க முடியாது. ஆனால் நிகழ்காலத்தை கொடுக்கலாம்."'
-      english={`"You can't give back the past. But you can give them the present."`}
-      type="guilt"
-    />
   </section>
 );
 
 /* ─── PRICING ─── */
 const Pricing = () => {
-  const features = ['Doctor Home Visits', '24x7 Emergency Support', 'Companion AI', 'Medicine Reminders', 'Blood Tests at Home', 'Emotional & Mental Health Support', 'Medical Records Digitalisation', 'Home Safety Assessment', 'Senior Medical Insurance Guidance', 'Free Senior Community Access'];
+  const features = [
+    { category: 'Medical Care', items: ['Doctor Home Visits', 'Blood Tests at Home', 'Medical Records Digitalisation', 'Senior Medical Insurance Guidance'] },
+    { category: 'Daily Support', items: ['Medicine Reminders', 'Companion AI', 'Emotional & Mental Health Support'] },
+    { category: 'Safety & Emergency', items: ['24x7 Emergency Support', 'Home Safety Assessment', 'Free Senior Community Access'] },
+  ];
   return (
     <section className="pkg-section" id="pricing">
       <div className="pkg-inner">
@@ -505,9 +555,9 @@ const Pricing = () => {
           <h2 className="pkg-h2">Simple.<br />Transparent.<br />One Plan.</h2>
           <p className="pkg-sub">No hidden charges. No complicated tiers. Everything your parent needs, covered.</p>
           <div className="pkg-highlights">
-            {['Medical care at home', 'Dedicated care manager', 'Mental health support', '24x7 emergency line'].map(text => (
+            {['One dedicated care manager for your family', 'No hidden costs or surprise fees', 'Everything handled for you — we coordinate all services', 'Designed specifically for NRI families'].map(text => (
               <div className="pkg-hl" key={text}>
-                <span className="pkg-hl-dot" />
+                <span className="pkg-hl-check" />
                 <span>{text}</span>
               </div>
             ))}
@@ -521,7 +571,7 @@ const Pricing = () => {
           <div className="pkg-card-header">
             <div>
               <div className="pkg-name">60Plus Care Plan</div>
-              <div className="pkg-tag-line">All-inclusive senior care</div>
+              <div className="pkg-tag-line">Complete care for your parents — handled end-to-end</div>
             </div>
             <div className="pkg-price-block">
               <span className="pkg-amount">$50</span>
@@ -529,15 +579,29 @@ const Pricing = () => {
             </div>
           </div>
           <div className="pkg-features">
-            {features.map((f, i) => (
-              <div className="pkg-feat" key={i}>
-                <div className="pkg-feat-dot" />
-                <span>{f}</span>
+            {features.map((group, groupIndex) => (
+              <div key={groupIndex}>
+                <div className="pkg-feat-category">{group.category}</div>
+                {group.items.map((f, i) => (
+                  <div className="pkg-feat" key={`${groupIndex}-${i}`}>
+                    <div className="pkg-feat-dot" />
+                    <span>{f}</span>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
-          <a href="#consult" className="pkg-cta" onClick={() => trackCtaClick('pricing_enroll_now')}>Enroll Now — $50/month</a>
-          <p className="pkg-sub-cta">Or WhatsApp: <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">+91 94999 44939</a></p>
+          <a href="#consult-form" className="pkg-cta">Get Peace of Mind — $50/month</a>
+          <p className="pkg-sub-cta" style={{padding: '18px 30px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L.057 23.885l6.233-1.633A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.374l-.359-.214-3.7.97.988-3.607-.234-.37A9.818 9.818 0 1112 21.818z"/>
+            </svg>
+            <span className="pkg-sub-cta-text">Prefer WhatsApp? <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">+91 94999 44939</a></span>
+          </p>
+          <p className="pkg-urgency" style={{textAlign: 'center', fontSize: '11px', color: 'rgba(123, 63, 199, 0.7)', marginTop: '4px', marginBottom: '20px'}}>
+            Limited onboarding slots each month
+          </p>
         </div>
       </div>
     </section>
@@ -547,6 +611,7 @@ const Pricing = () => {
 /* ─── FAQ ─── */
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  // Objection-handling questions - first 2 are highest priority fears
   const faqs = [
     { q: 'நீங்கள் எந்த மாவட்டங்களில் சேவை செய்கிறீர்கள்?', a: 'தமிழ்நாட்டில் உள்ள அனைத்து மாவட்டங்களிலும் எங்கள் சேவை கிடைக்கிறது — சென்னை, கோயம்புத்தூர், மதுரை, திருச்சி, சேலம், வேலூர், திருநெல்வேலி உட்பட அனைத்து மாவட்டங்களிலும்.' },
     { q: 'எந்த வயதிலிருந்து உங்கள் சேவையை பெறலாம்?', a: '55 வயதுக்கு மேற்பட்ட அனைவரும் 60Plus Global சேவையை பயன்படுத்திக்கொள்ளலாம்.' },
@@ -556,10 +621,10 @@ const FAQ = () => {
   ];
   return (
     <section className="faq-section" id="faq">
-      <div className="section-header">
+      <div className="section-header" style={{ maxWidth: '820px', margin: '0 auto 24px' }}>
         <div className="section-tag">FAQ</div>
-        <h2 className="section-title tamil">உங்கள் கேள்விகளுக்கு பதில் இங்கே</h2>
-        <p className="section-sub">We know you have questions. Here are the honest answers.</p>
+        <h2 className="section-title tamil">நீங்கள் யோசிப்பது இதுதான்...<br />நாங்கள் நேராக பதில் சொல்கிறோம்</h2>
+        <p className="section-sub" style={{ color: '#7b3fc7', fontWeight: 500 }}>Clear answers before you decide.</p>
         <div className="section-line" />
       </div>
       <div className="faq-list">
@@ -575,10 +640,11 @@ const FAQ = () => {
           </div>
         ))}
       </div>
-      <div className="faq-finale">
+      <div className="faq-finale" style={{ textAlign: 'center' }}>
         <p className="faq-finale-tamil tamil">"இன்று ஒரு அழைப்பு. அவர்களுக்கு ஒரு புதிய வாழ்க்கை."</p>
         <p className="faq-finale-eng">"One call today. A new life for them."</p>
-        <a href="#consult" className="faq-finale-btn" onClick={() => trackCtaClick('faq_free_consultation')}>Get Your Free Consultation</a>
+        <a href="#consult-form" className="faq-finale-btn">Talk to a Care Expert Today</a>
+        <p className="faq-urgency">Limited onboarding slots each week</p>
       </div>
     </section>
   );
@@ -590,11 +656,12 @@ const Footer = () => (
     <div className="footer-top">
       <div className="footer-brand">
         <div className="footer-logo-row">
-          <img src="/so.png" alt="SixtyPlus Global" />
-          <div><h4>SixtyPlus Global</h4><p>India's #1 Emerging Senior Preventive Care Platform</p></div>
+          <img src="so.png" alt="SixtyPlus Global" />
+          <div><h4>SixtyPlus Global</h4><p>Helping you care for your parents — even from miles away.</p></div>
         </div>
         <p className="footer-tagline">Caring for the ones who cared for you.</p>
         <div className="footer-social">
+          <span className="footer-social-label">Follow us</span>
           {[
             { label: 'Instagram', href: 'https://www.instagram.com/life_after_sixty_tamil', path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z' },
             { label: 'YouTube', href: 'https://m.youtube.com/@LifeAfterSixty-Tamil', path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
@@ -613,11 +680,20 @@ const Footer = () => (
         {[['Services', '#services'], ['Why Us', '#why'], ['Statistics', '#stats'], ['Pricing', '#pricing'], ['FAQ', '#faq']].map(([l, h]) => <a key={l} href={h}>{l}</a>)}
       </div>
       <div className="footer-contact-col">
-        <h5>Contact</h5>
-        <a href="tel:+919499944939">+91 94999 44939</a>
-        <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+        <h5>Call or WhatsApp</h5>
+        <a href="tel:+919499944939" className="footer-phone">+91 94999 44939</a>
+        <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer" className="footer-wa">WhatsApp 24/7</a>
+        <span className="footer-availability">Available 24/7 for urgent support</span>
       </div>
     </div>
+    {/* <div className="footer-cta">
+          <div className="footer-cta-content">
+            <h3>Still thinking about your parents?</h3>
+            <p>Speak to a care expert today.</p>
+            <a href="#consult-form" className="footer-cta-btn">Talk to Us Now</a>
+            <p className="footer-cta-sub">No pressure. Just guidance.</p>
+          </div>
+        </div> */}
     <div className="footer-bottom">
       <p>© 2025 SixtyPlus Global. All rights reserved.</p>
       <div className="footer-bottom-links">
@@ -625,6 +701,7 @@ const Footer = () => (
         <a href="/privacy-policy" className="footer-link-btn">Privacy Policy</a>
       </div>
     </div>
+    {/* <div className="footer-bottom-line">Because they cared for you first.</div> */}
   </footer>
 );
 
@@ -636,15 +713,14 @@ export default function App() {
   <Route path="/" element={<>
           <Nav />
           <WaFloat />
-          <ConsultFAB />
+          {/* <ConsultFAB /> */}
           <main>
             <Hero />
-           
             <Services />
             <WhyAndForm />
             <Statistics />
-            <AllServices />
-            <CompetitiveAdvantage />
+            <CompleteCare />
+            <CompetitiveAdvantage  />
             <Pricing />
             <FAQ />
           </main>
@@ -654,4 +730,4 @@ export default function App() {
   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 </Routes>
   );
-} 
+}
