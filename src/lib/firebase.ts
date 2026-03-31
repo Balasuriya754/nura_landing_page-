@@ -56,12 +56,11 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>):
 };
 
 /**
- * Track CTA button clicks
- * Call this on CTA button click handlers
+ * Track button clicks with a specific event name
+ * eventName becomes the analytics event name (e.g. "hero_consultation_click")
  */
-export const trackCtaClick = (ctaName: string, additionalParams?: Record<string, unknown>): void => {
-  trackEvent('cta_click', {
-    cta_name: ctaName,
+export const trackCtaClick = (eventName: string, additionalParams?: Record<string, unknown>): void => {
+  trackEvent(eventName, {
     timestamp: new Date().toISOString(),
     ...additionalParams
   });
