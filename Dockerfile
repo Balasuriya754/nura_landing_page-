@@ -1,33 +1,33 @@
-# Build stage
-FROM node:18-alpine AS builder
+# ---------- Build Stage ----------
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Accept build argument
+ARG VITE_API_URL
+
+# Set env for Vite build
+ENV VITE_API_URL=$VITE_API_URL
+
 COPY package*.json ./
+RUN npm ci
 
-# Install dependencies
-RUN npm install
-
-# Copy source code
 COPY . .
 
-# Build the app
+# Build with correct API URL
 RUN npm run build
 
-# Production stage
-FROM node:18-alpine
+
+# ---------- Production Stage ----------
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Install serve to run the built app
 RUN npm install -g serve
 
-# Copy built assets from builder stage
+# Copy built files
 COPY --from=builder /app/dist ./dist
 
-# Expose port
 EXPOSE 3000
 
-# Start the app
 CMD ["serve", "-s", "dist", "-l", "3000"]

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8300';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -57,6 +57,16 @@ export const formsApi = {
 
   getResponses: async (formId) => {
     const response = await api.get(`/v1/forms/${formId}/responses`, { headers: getAuthHeaders() });
+    return response.data;
+  },
+
+  activateForm: async (formId) => {
+    const response = await api.put(`/v1/forms/${formId}/activate`, {}, { headers: getAuthHeaders() });
+    return response.data;
+  },
+
+  deactivateForm: async (formId) => {
+    const response = await api.put(`/v1/forms/${formId}/deactivate`, {}, { headers: getAuthHeaders() });
     return response.data;
   },
 

@@ -6,6 +6,16 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import AdminDashboard from './pages/AdminDashboard';
 import { trackCtaClick } from './lib/firebase';
 
+// CTA click tracker helper - triggers analytics and navigates
+const trackAndNavigate = (eventName, event) => {
+  event.preventDefault();
+  trackCtaClick(eventName);
+  const href = event.currentTarget.getAttribute('href');
+  if (href) {
+    window.location.hash = href;
+  }
+};
+
 const heroSlideImages = [
   'hero/innerbanner-1.png',
   'hero/Mahadevan_Sitting2_LJ_India.jpg',
@@ -30,12 +40,16 @@ const QuoteStrip = ({ tamil, english, type = 'guilt' }) => (
 const WaFloat = () => {
   const [visible, setVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setVisible(true), 1200); return () => clearTimeout(t); }, []);
+  const handleWhatsAppClick = () => {
+    trackCtaClick('whatsapp_float_click');
+  };
   return (
     <a
       href="https://wa.me/919499944939?text=Welcome%20to%2060%20plus%20community%21%20How%20can%20I%20help%20you%20%21"
       className={`wa-fab ${visible ? 'wa-fab--on' : ''}`}
       target="_blank" rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={handleWhatsAppClick}
     >
       <span className="wa-ring r1" />
       <span className="wa-ring r2" />
@@ -84,16 +98,16 @@ const Nav = () => {
           {/* <span>SixtyPlus Global</span> */}
         </div>
         <div className="nav-links">
-          {links.map((l, i) => <a key={l} href={hrefs[i]}>{l}</a>)}
+          {links.map((l, i) => <a key={l} href={hrefs[i]} onClick={(e) => { trackCtaClick(`nav_link_${l.toLowerCase().replace(/\s+/g, '_')}_click`) }}>{l}</a>)}
         </div>
-        <a href="#consult-form" className="nav-cta">Talk to Us</a>
+        <a href="#consult-form" className="nav-cta" onClick={(e) => { trackCtaClick('nav_desktop_cta_click') }}>Talk to Us</a>
         <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span /><span />
         </div>
       </nav>
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        {links.map((l, i) => <a key={l} href={hrefs[i]} onClick={() => setMenuOpen(false)}>{l}</a>)}
-        <a href="#consult-form" className="mob-cta" onClick={() => setMenuOpen(false)}>Talk to Us</a>
+        {links.map((l, i) => <a key={l} href={hrefs[i]} onClick={() => { trackCtaClick(`nav_mobile_link_${l.toLowerCase().replace(/\s+/g, '_')}_click`) }}>{l}</a>)}
+        <a href="#consult-form" className="mob-cta" onClick={() => { trackCtaClick('nav_mobile_cta_click') }}>Talk to Us</a>
       </div>
     </>
   );
@@ -147,7 +161,7 @@ const Hero = () => {
             ))}
           </div>
           <div className="hero-btns">
-            <a href="#consult-form" className="btn-primary">
+            <a href="#consult-form" className="btn-primary" onClick={(e) => { trackCtaClick('hero_primary_cta_click') }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.17-6.17 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
@@ -245,7 +259,7 @@ const Services = () => {
           We take care of everything — with attention, coordination, and regular follow-ups.<br />
           <span className="services-closing-sub">So you can stay reassured.</span>
         </p>
-        <a href="#consult-form" className="services-cta">See How It Works →</a>
+        <a href="#consult-form" className="services-cta" onClick={(e) => { trackCtaClick('services_section_cta_click') }}>See How It Works →</a>
       </div>
     </section>
   );
@@ -333,7 +347,7 @@ const WhyAndForm = () => {
                 </select>
                 {errors.mobility && <span className="error-msg">{errors.mobility}</span>}
               </div>
-              <button type="submit" className="form-submit" disabled={loading} onClick={() => trackCtaClick('form_submit_button')}>{loading ? 'Submitting…' : 'Talk to a Care Expert Today'}</button>
+              <button type="submit" className="form-submit" disabled={loading}>{loading ? 'Submitting...' : 'Talk to a Care Expert Today'}</button>
               <p className="form-note">No spam. No pressure. 100% confidential.<br />Protected by reCAPTCHA — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Privacy</a> & <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>Terms</a></p>
             </form>
           )}
@@ -389,7 +403,7 @@ const Statistics = () => (
         <blockquote>"In Tamil Nadu, 1 in 3 elders lives alone. Their silence is not peace — it's the absence of someone to call."</blockquote>
         <cite>— Geriatric Care Research, Tamil Nadu 2024</cite>
       </div>
-      <a href="#consult-form" className="stats-banner-cta">Start Care Today →</a>
+      <a href="#consult-form" className="stats-banner-cta" onClick={(e) => { trackCtaClick('stats_banner_cta_click') }}>Start Care Today →</a>
     </div>
   </section>
 );
@@ -482,7 +496,7 @@ const CompleteCare = () => {
           <p className="highlight-text">
            We take care of everything — so you don’t have to manage it from miles away.
           </p>
-          <a href="#consult-form" className="care-highlight-cta">
+          <a href="#consult-form" className="care-highlight-cta" onClick={(e) => { trackCtaClick('care_highlight_cta_click') }}>
             Talk to a Care Expert
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -591,7 +605,7 @@ const Pricing = () => {
               </div>
             ))}
           </div>
-          <a href="#consult-form" className="pkg-cta">Get Peace of Mind — $50/month</a>
+          <a href="#consult-form" className="pkg-cta" onClick={(e) => { trackCtaClick('pricing_section_cta_click') }}>Get Peace of Mind — $50/month</a>
           <p className="pkg-sub-cta" style={{padding: '18px 30px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
@@ -643,7 +657,7 @@ const FAQ = () => {
       <div className="faq-finale" style={{ textAlign: 'center' }}>
         <p className="faq-finale-tamil tamil">"இன்று ஒரு அழைப்பு. அவர்களுக்கு ஒரு புதிய வாழ்க்கை."</p>
         <p className="faq-finale-eng">"One call today. A new life for them."</p>
-        <a href="#consult-form" className="faq-finale-btn">Talk to a Care Expert Today</a>
+        <a href="#consult-form" className="faq-finale-btn" onClick={(e) => { trackCtaClick('faq_section_cta_click') }}>Talk to a Care Expert Today</a>
         <p className="faq-urgency">Limited onboarding slots each week</p>
       </div>
     </section>
@@ -657,9 +671,10 @@ const Footer = () => (
       <div className="footer-brand">
         <div className="footer-logo-row">
           <img src="so.png" alt="SixtyPlus Global" />
-          <div><h4>SixtyPlus Global</h4><p>Helping you care for your parents — even from miles away.</p></div>
+          <div className="footer-logo-content">
+            <p className="footer-tagline">Helping you care for your parents — even from miles away.</p>
+          </div>
         </div>
-        <p className="footer-tagline">Caring for the ones who cared for you.</p>
         <div className="footer-social">
           <span className="footer-social-label">Follow us</span>
           {[

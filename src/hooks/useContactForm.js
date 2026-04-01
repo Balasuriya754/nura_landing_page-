@@ -22,7 +22,7 @@ const useContactForm = (initialValues = DEFAULT_INITIAL_VALUES) => {
   const [showV2, setShowV2] = useState(false);
 
   // Backend API URL from environment
-  const API_URL = import.meta.env.VITE_API_URL || 'https://delaney-actinolitic-incapably.ngrok-free.dev';
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const sendToBackend = async (payload) => {
     console.log('sendToBackend called with:', payload);

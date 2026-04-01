@@ -1151,6 +1151,11 @@
   font-family: inherit;
 }
 
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
 .btn-primary {
   background: var(--primary);
   color: white;
@@ -1395,8 +1400,119 @@
   }
 }
 
+/* ===== Password Toggle ===== */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  border-radius: var(--radius);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.password-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* ===== Field Error ===== */
+.field-error {
+  color: var(--danger);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ===== Mobile Improvements ===== */
+@media (max-width: 768px) {
+  .sidebar.collapsed {
+    margin-left: calc(var(--sidebar-collapsed) * -1);
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sidebar.active {
+    margin-left: 0;
+  }
+
+  .sidebar.collapsed ~ .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar.active ~ .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar.active {
+    width: var(--sidebar-w);
+  }
+
+  /* Mobile Sidebar Overlay */
+  .mobile-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .mobile-sidebar-overlay .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1001;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .stats-section {
+    padding: 16px;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+
+  .login-left {
+    padding: 24px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
   }
 }

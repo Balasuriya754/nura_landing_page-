@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { formsApi } from '../services/api';
 import {
   LayoutDashboard,
   FileText,
-  Users,
   LogOut,
   Menu,
   X,
@@ -25,8 +25,15 @@ import {
   Lock,
   AlertCircle,
   Loader2,
+  ListFilter,
+  Play,
+  Pause,
+  EyeOff,
+  ShieldCheck,
+  ShieldAlert,
 } from 'lucide-react';
 import '../admin.css';
+import '../index.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8300';
 
@@ -50,11 +57,41 @@ const LoginPage = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEmailError('');
+    setPasswordError('');
     setLoading(true);
     setError('');
+
+    // Validate email
+    if (!email.trim()) {
+      setEmailError('Email is required');
+      setLoading(false);
+      return;
+    }
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email address');
+      setLoading(false);
+      return;
+    }
+
+    // Validate password
+    if (!password.trim()) {
+      setPasswordError('Password is required');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await api.post('/v1/forms/admin/login', { email, password });
       if (response.data.status === 'success') {
@@ -64,7 +101,13 @@ const LoginPage = ({ onLogin }) => {
         setError(response.data.message || 'Login failed');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid email or password');
+      const errorMsg = err.response?.data?.message || 'Invalid email or password';
+      // Extract specific error from FastAPI validation
+      if (err.response?.status === 422 && err.response?.data?.detail) {
+        setError('Invalid email or password');
+      } else {
+        setError(errorMsg);
+      }
     } finally {
       setLoading(false);
     }
@@ -91,11 +134,42 @@ const LoginPage = ({ onLogin }) => {
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-field">
               <label>Email address</label>
-              <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailError('');
+                }}
+                required
+                className={emailError ? 'input-error' : ''}
+              />
+              {emailError && <span className="field-error">{emailError}</span>}
             </div>
             <div className="login-field">
               <label>Password</label>
-              <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div className="password-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setPasswordError('');
+                  }}
+                  required
+                  className={passwordError ? 'input-error' : ''}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <ShieldCheck size={18} />}
+                </button>
+              </div>
+              {passwordError && <span className="field-error">{passwordError}</span>}
             </div>
             <button type="submit" className="login-btn" disabled={loading}>
               {loading ? <><Loader2 size={18} className="spin" /> Signing in...</> : 'Sign in'}
@@ -104,7 +178,7 @@ const LoginPage = ({ onLogin }) => {
         </div>
       </div>
 
-      <div className="login-right">
+      {/* <div className="login-right">
         <div className="login-right-content">
           <div className="login-right-icon">&#127793;</div>
           <h2>Care starts here</h2>
@@ -115,17 +189,17 @@ const LoginPage = ({ onLogin }) => {
             <div className="login-stat"><div className="login-stat-value">80+</div><div className="login-stat-label">Partners</div></div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
-const Sidebar = ({ active, setActive, collapsed, setCollapsed, onLogout, submissionsCount }) => {
+const Sidebar = ({ active, setActive, collapsed, setCollapsed, onLogout, submissionsCount, formsCount }) => {
   const items = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'submissions', label: 'Submissions', icon: FileText, badge: submissionsCount },
-    { id: 'users', label: 'Users', icon: Users },
+    { id: 'forms', label: 'Forms', icon: FileText, badge: formsCount },
   ];
 
   return (
@@ -321,11 +395,21 @@ const DashboardView = ({ submissions }) => {
 };
 
 // ─── Submissions Table ──────────────────────────────────────────────────────
-const SubmissionsView = ({ submissions, loading, onViewDetails }) => {
+const SubmissionsView = ({ submissions, forms, formFilter, setFormFilter, loading, onViewDetails }) => {
   const [search, setSearch] = useState('');
   const [mobilityFilter, setMobilityFilter] = useState('');
+  const [ageCategory, setAgeCategory] = useState('');
+  const [minAge, setMinAge] = useState('');
+  const [maxAge, setMaxAge] = useState('');
+  const [dateFilter, setDateFilter] = useState('all');
   const [sort, setSort] = useState('newest');
 
+  // Get current date for date filter options
+  const today = new Date().toISOString().split('T')[0];
+  const thisWeekStart = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const thisMonthStart = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+  // Filter submissions
   const filtered = submissions
     .filter((s) => {
       const q = search.toLowerCase();
@@ -335,7 +419,28 @@ const SubmissionsView = ({ submissions, loading, onViewDetails }) => {
         s.phoneNumber.includes(search) ||
         s.locationOfParent.toLowerCase().includes(q);
       const matchMobility = !mobilityFilter || s.mobilityStatus === mobilityFilter;
-      return matchSearch && matchMobility;
+      const matchForm = !formFilter || s.formId === formFilter;
+
+      // Age category filter
+      if (ageCategory) {
+        const age = s.ageOfParent;
+        if (ageCategory === '40-50' && (age < 40 || age > 50)) return false;
+        if (ageCategory === '51-60' && (age < 51 || age > 60)) return false;
+        if (ageCategory === '61-70' && (age < 61 || age > 70)) return false;
+        if (ageCategory === '71+' && age < 71) return false;
+      }
+
+      // Age range filter
+      if (minAge && s.ageOfParent < parseInt(minAge)) return false;
+      if (maxAge && s.ageOfParent > parseInt(maxAge)) return false;
+
+      // Date filter
+      const submissionDate = new Date(s.createdAt).toISOString().split('T')[0];
+      if (dateFilter === 'today' && submissionDate !== today) return false;
+      if (dateFilter === 'week' && submissionDate < thisWeekStart) return false;
+      if (dateFilter === 'month' && submissionDate < thisMonthStart) return false;
+
+      return matchSearch && matchMobility && matchForm;
     })
     .sort((a, b) => {
       if (sort === 'newest') return new Date(b.createdAt) - new Date(a.createdAt);
@@ -371,8 +476,8 @@ const SubmissionsView = ({ submissions, loading, onViewDetails }) => {
           <h1 className="page-title">Submissions</h1>
           <p className="page-subtitle">{submissions.length} total responses</p>
         </div>
-        <button className="btn btn-primary" onClick={exportCSV}>
-          <Download size={16} /> Export CSV
+        <button className="btn btn-primary btn-sm" onClick={exportCSV}>
+          <Download size={14} /> Export CSV
         </button>
       </div>
 
@@ -385,11 +490,52 @@ const SubmissionsView = ({ submissions, loading, onViewDetails }) => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
+        <select className="filter-select" value={formFilter} onChange={(e) => setFormFilter(e.target.value)}>
+          <option value="">All Forms</option>
+          {forms.map((form) => (
+            <option key={form.id} value={form.id}>
+              {form.form_name || form.id}
+            </option>
+          ))}
+        </select>
         <select className="filter-select" value={mobilityFilter} onChange={(e) => setMobilityFilter(e.target.value)}>
           <option value="">All Mobility</option>
           <option value="Independent and Active">Independent</option>
           <option value="Needs Partial Assistance">Partial Care</option>
           <option value="Requires full-time care">Full-time Care</option>
+        </select>
+        <select className="filter-select" value={ageCategory} onChange={(e) => setAgeCategory(e.target.value)}>
+          <option value="">All Ages</option>
+          <option value="40-50">40-50 Years</option>
+          <option value="51-60">51-60 Years</option>
+          <option value="61-70">61-70 Years</option>
+          <option value="71+">71+ Years</option>
+        </select>
+        <div className="filter-select" style={{ display: 'flex', gap: 4 }}>
+          <input
+            type="number"
+            placeholder="Min Age"
+            value={minAge}
+            onChange={(e) => setMinAge(e.target.value)}
+            style={{ flex: 1, padding: '8px 12px', border: '1px solid #ddd', borderRadius: 4, fontSize: 14 }}
+            min="0"
+            max="150"
+          />
+          <input
+            type="number"
+            placeholder="Max Age"
+            value={maxAge}
+            onChange={(e) => setMaxAge(e.target.value)}
+            style={{ flex: 1, padding: '8px 12px', border: '1px solid #ddd', borderRadius: 4, fontSize: 14 }}
+            min="0"
+            max="150"
+          />
+        </div>
+        <select className="filter-select" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)}>
+          <option value="all">All Time</option>
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
         </select>
         <select className="filter-select" value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value="newest">Newest first</option>
@@ -458,102 +604,72 @@ const SubmissionsView = ({ submissions, loading, onViewDetails }) => {
   );
 };
 
-// ─── Users Table ─────────────────────────────────────────────────────────────
-const UsersView = ({ submissions, loading }) => {
-  const [search, setSearch] = useState('');
-  const [mobilityFilter, setMobilityFilter] = useState('');
-
-  const filtered = submissions
-    .filter((s) => {
-      const q = search.toLowerCase();
-      return (!q || s.name.toLowerCase().includes(q) || s.emailId.toLowerCase().includes(q) || s.phoneNumber.includes(search))
-        && (!mobilityFilter || s.mobilityStatus === mobilityFilter);
-    })
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-  const independent = submissions.filter((s) => s.mobilityStatus === 'Independent and Active').length;
-  const needsCare = submissions.length - independent;
-
-  const getVariant = (status) => {
-    if (status === 'Independent and Active' || status === 'Independent & Active') return 'success';
-    if (status === 'Needs Partial Assistance') return 'warning';
-    return 'danger';
-  };
-
+// ─── Forms View ──────────────────────────────────────────────────────────────
+const FormsView = ({ forms, onActivate, onDeactivate }) => {
   return (
-    <div className="users-container">
+    <div className="submissions-container">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Users</h1>
-          <p className="page-subtitle">All registered users</p>
+          <h1 className="page-title">Manage Forms</h1>
+          <p className="page-subtitle">{forms.length} total forms</p>
         </div>
       </div>
 
-      <div className="stats-grid" style={{ marginBottom: 24 }}>
-        <StatCard label="Total Users" value={submissions.length} icon={Users} variant="primary" />
-        <StatCard label="Independent" value={independent} icon={Activity} variant="success" />
-        <StatCard label="Needs Assistance" value={needsCare} icon={Heart} variant="warning" />
-      </div>
-
-      <div className="filters">
-        <div className="search-box">
-          <Search size={16} className="search-icon" />
-          <input placeholder="Search by name, email, or phone..." value={search} onChange={(e) => setSearch(e.target.value)} />
-        </div>
-        <select className="filter-select" value={mobilityFilter} onChange={(e) => setMobilityFilter(e.target.value)}>
-          <option value="">All Status</option>
-          <option value="Independent and Active">Independent</option>
-          <option value="Needs Partial Assistance">Partial Care</option>
-          <option value="Requires full-time care">Full-time Care</option>
-        </select>
-      </div>
-
-      <div className="results-count">
-        Showing <strong>{filtered.length}</strong> of {submissions.length} users
-      </div>
-
-      {loading ? (
-        <div className="loading-state">
-          <div className="spinner large" />
-        </div>
-      ) : (
-        <div className="table-wrapper">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>User</th>
-                <th>Phone</th>
-                <th>Location</th>
-                <th>Age</th>
-                <th>Mobility</th>
-                <th>Registered</th>
+      <div className="table-wrapper">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Form Name</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {forms.map((form, i) => (
+              <tr key={i}>
+                <td>
+                  <div className="table-user">
+                    <div className="table-avatar">{form.form_name?.charAt(0).toUpperCase() || 'F'}</div>
+                    <span className="table-user-name">{form.form_name || form.id}</span>
+                  </div>
+                </td>
+                <td>
+                  <span
+                    className={`badge ${
+                      form.status === 'active'
+                        ? 'success'
+                        : 'danger'
+                    }`}
+                  >
+                    {form.status === 'active' ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>{new Date(form.created_at || form.createdAt).toLocaleDateString()}</td>
+                <td>
+                  {form.status === 'active' ? (
+                    <button
+                      className="btn btn-ghost"
+                      onClick={() => onDeactivate(form.id)}
+                      title="Deactivate form"
+                    >
+                      <Pause size={16} />
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-ghost"
+                      onClick={() => onActivate(form.id)}
+                      title="Activate form"
+                    >
+                      <Play size={16} />
+                    </button>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {filtered.map((u, i) => (
-                <tr key={i}>
-                  <td>
-                    <div className="table-user">
-                      <div className="table-avatar">{u.name?.charAt(0).toUpperCase()}</div>
-                      <div>
-                        <div className="table-user-name">{u.name}</div>
-                        <div className="table-email-small">{u.emailId}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>{u.phoneNumber}</td>
-                  <td>{u.locationOfParent}</td>
-                  <td>{u.ageOfParent} yrs</td>
-                  <td>
-                    <Badge variant={getVariant(u.mobilityStatus)}>{u.mobilityStatus}</Badge>
-                  </td>
-                  <td>{new Date(u.createdAt).toLocaleDateString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
@@ -618,9 +734,26 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [collapsed, setCollapsed] = useState(false);
   const [submissions, setSubmissions] = useState([]);
+  const [forms, setForms] = useState([]);
+  const [formFilter, setFormFilter] = useState('');
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check screen size for mobile responsiveness
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setCollapsed(true);
+      }
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const token = getStoredToken();
@@ -635,7 +768,10 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
-    if (isAuth) fetchSubmissions();
+    if (isAuth) {
+      fetchSubmissions();
+      fetchForms();
+    }
   }, [isAuth]);
 
   const fetchSubmissions = async (isRefresh = false) => {
@@ -666,6 +802,17 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchForms = async () => {
+    try {
+      const res = await formsApi.listForms();
+      if (res.status === 'success') {
+        setForms(res.data.data || []);
+      }
+    } catch (err) {
+      console.error('Failed to fetch forms:', err);
+    }
+  };
+
   const handleRefresh = () => {
     fetchSubmissions(true);
   };
@@ -674,6 +821,25 @@ export default function AdminDashboard() {
     clearStoredToken();
     setIsAuth(false);
     setSubmissions([]);
+    setForms([]);
+  };
+
+  const activateForm = async (formId) => {
+    try {
+      await formsApi.activateForm(formId);
+      fetchForms();
+    } catch (err) {
+      console.error('Failed to activate form:', err);
+    }
+  };
+
+  const deactivateForm = async (formId) => {
+    try {
+      await formsApi.deactivateForm(formId);
+      fetchForms();
+    } catch (err) {
+      console.error('Failed to deactivate form:', err);
+    }
   };
 
   if (checking) {
@@ -697,14 +863,23 @@ export default function AdminDashboard() {
         setCollapsed={setCollapsed}
         onLogout={handleLogout}
         submissionsCount={submissions.length}
+        formsCount={forms.length}
       />
 
       <div className="main-content">
         <header className="header">
           <div className="header-left">
-            {collapsed && <div className="header-brand-small">60+</div>}
+            {isMobile && !mobileMenuOpen && (
+              <button
+                className="sidebar-toggle mobile-menu-toggle"
+                onClick={() => setMobileMenuOpen(true)}
+              >
+                <Menu size={18} />
+              </button>
+            )}
+            {collapsed && !isMobile && <div className="header-brand-small">60+</div>}
             <h1 className="header-title">
-              {activeTab === 'dashboard' ? 'Dashboard' : activeTab === 'submissions' ? 'Submissions' : 'Users'}
+              {activeTab === 'dashboard' ? 'Dashboard' : activeTab === 'submissions' ? 'Submissions' : 'Forms'}
             </h1>
           </div>
           <div className="header-actions">
@@ -723,16 +898,37 @@ export default function AdminDashboard() {
           </div>
         </header>
 
+        {/* Mobile Sidebar Overlay */}
+        {isMobile && mobileMenuOpen && (
+          <div className="mobile-sidebar-overlay" onClick={() => setMobileMenuOpen(false)}>
+            <Sidebar
+              active={activeTab}
+              setActive={(tab) => {
+                setActiveTab(tab);
+                setMobileMenuOpen(false);
+              }}
+              collapsed={false}
+              setCollapsed={setCollapsed}
+              onLogout={handleLogout}
+              submissionsCount={submissions.length}
+              formsCount={forms.length}
+            />
+          </div>
+        )}
+
         <main className="page-content">
           {activeTab === 'dashboard' && <DashboardView submissions={submissions} />}
           {activeTab === 'submissions' && (
             <SubmissionsView
               submissions={submissions}
+              forms={forms}
+              formFilter={formFilter}
+              setFormFilter={setFormFilter}
               loading={loading}
               onViewDetails={setSelected}
             />
           )}
-          {activeTab === 'users' && <UsersView submissions={submissions} loading={loading} />}
+          {activeTab === 'forms' && <FormsView forms={forms} onActivate={activateForm} onDeactivate={deactivateForm} />}
         </main>
       </div>
 

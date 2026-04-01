@@ -2,7 +2,7 @@
 // This file initializes Firebase and exports analytics utilities
 
 import { initializeApp, FirebaseApp } from 'firebase/app';
-import { getAnalytics, logEvent, Analytics, isSupported } from 'firebase/analytics';
+import { getAnalytics, logEvent, isSupported, Analytics } from 'firebase/analytics';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -23,10 +23,10 @@ let analytics: Analytics | null = null;
  * Initialize Firebase and Analytics
  * SSR-safe: only runs in browser environment
  */
-export const initFirebase = async (): Promise<{ app: FirebaseApp | null; analytics: Analytics | null }> => {
+export const initFirebase = async (): Promise<{ app: FirebaseApp | null; analytics: typeof analytics }> => {
   // Guard: Only run in browser (not during SSR/build)
   if (typeof window === 'undefined') {
-    return { app: null, analytics: null };
+    return { app: null, analytics };
   }
 
   // Initialize only once
@@ -34,11 +34,13 @@ export const initFirebase = async (): Promise<{ app: FirebaseApp | null; analyti
     app = initializeApp(firebaseConfig);
   }
 
-  // Initialize Analytics only if supported (excludes SSR, some privacy modes)
+  // Initialize Analytics
   if (!analytics) {
     const supported = await isSupported();
+    console.log('[Firebase] Analytics supported:', supported);
     if (supported) {
       analytics = getAnalytics(app);
+      console.log('[Firebase] Analytics initialized');
     }
   }
 
@@ -49,9 +51,12 @@ export const initFirebase = async (): Promise<{ app: FirebaseApp | null; analyti
  * Log a custom event to Firebase Analytics
  * Safe to call anywhere - no-ops if analytics not initialized
  */
-export const trackEvent = (eventName: string, params?: Record<string, unknown>): void => {
+export const trackEvent = (eventName: string, _params?: Record<string, unknown>): void => {
+  console.log('[Firebase] trackEvent:', eventName, _params);
   if (analytics) {
-    logEvent(analytics, eventName, params);
+    logEvent(analytics, eventName, _params);
+  } else {
+    console.warn('[Firebase] Analytics not initialized!');
   }
 };
 
@@ -60,10 +65,12 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>):
  * eventName becomes the analytics event name (e.g. "hero_consultation_click")
  */
 export const trackCtaClick = (eventName: string, additionalParams?: Record<string, unknown>): void => {
-  trackEvent(eventName, {
-    timestamp: new Date().toISOString(),
-    ...additionalParams
-  });
+  console.log('[Firebase] trackCtaClick:', eventName, additionalParams);
+  if (analytics) {
+    trackEvent(eventName, additionalParams);
+  } else {
+    console.warn('[Firebase] Cannot track - analytics not initialized');
+  }
 };
 
 /**
