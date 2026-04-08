@@ -1,0 +1,19 @@
+# Robots.txt for 60Plus Global
+# https://60plus.nurahub.com
+
+# Allow all robots to access the site
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /dashboard/
+
+# Disallow private user data
+Disallow: /api/
+Disallow: /user/
+Disallow: /profile/
+
+# Sitemap location
+Sitemap: https://60plus.nurahub.com/sitemap.xml
