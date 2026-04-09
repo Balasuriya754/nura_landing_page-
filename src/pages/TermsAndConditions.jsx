@@ -24,7 +24,7 @@ export default function TermsAndConditions() {
         <Section title="1. About Us">
           <p>SixtyPlus Global provides senior care support, care coordination, wellness support services, and, where applicable, facilitation and scheduling of consultations, visits, assessments, or related support services through our internal team and/or independent partner professionals and service providers.</p>
           <div style={styles.contactBox}>
-            <p style={styles.contactLine}><strong>Registered Business Name:</strong> SixtyPlus Global</p>
+            <p style={styles.contactLine}><strong>Registered Business Name:</strong> SixtyPlus Global (Part of Nura AI Labs)</p>
             <p style={styles.contactLine}><strong>Registered Address:</strong> Chennai, Tamil Nadu – 600028, India</p>
             <p style={styles.contactLine}><strong>Email:</strong> <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
             <p style={styles.contactLine}><strong>Phone:</strong> <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
