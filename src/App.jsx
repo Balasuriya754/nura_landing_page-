@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import useContactForm from './hooks/useContactForm';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CancellationRefundPolicy from './pages/CancellationRefundPolicy';
+import ServiceFulfilmentPolicy from './pages/ServiceFulfilmentPolicy';
 import AdminDashboard from './pages/AdminDashboard';
 import { trackCtaClick } from './lib/firebase';
 
@@ -613,9 +615,12 @@ const Pricing = () => {
             </svg>
             <span className="pkg-sub-cta-text">Prefer WhatsApp? <a href="https://wa.me/919499944939" target="_blank" rel="noopener noreferrer">+91 94999 44939</a></span>
           </p>
-          <p className="pkg-urgency" style={{textAlign: 'center', fontSize: '11px', color: 'rgba(123, 63, 199, 0.7)', marginTop: '4px', marginBottom: '20px'}}>
+          <p className="pkg-urgency" style={{textAlign: 'center', fontSize: '11px', color: 'rgba(123, 63, 199, 0.7)', marginTop: '4px', marginBottom: '10px'}}>
             Limited onboarding slots each month
           </p>
+          <div style={{textAlign: 'center', marginBottom: '10px'}}>
+            <a href="#footer" style={{fontSize: '12px', color: 'var(--gray-mid)', textDecoration: 'underline'}}>Policy</a>
+          </div>
         </div>
       </div>
     </section>
@@ -666,7 +671,7 @@ const FAQ = () => {
 
 /* ─── FOOTER ─── */
 const Footer = () => (
-  <footer>
+  <footer id="footer">
     <div className="footer-top">
       <div className="footer-brand">
         <div className="footer-logo-row">
@@ -694,6 +699,13 @@ const Footer = () => (
         <h5>Quick Links</h5>
         {[['Services', '#services'], ['Why Us', '#why'], ['Statistics', '#stats'], ['Pricing', '#pricing'], ['FAQ', '#faq']].map(([l, h]) => <a key={l} href={h}>{l}</a>)}
       </div>
+      <div className="footer-links-col">
+        <h5>Legal</h5>
+        <a href="/terms-and-conditions">Terms & Conditions</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/cancellation-refund-policy">Cancellation & Refund</a>
+        <a href="/service-fulfilment-policy">Service Fulfilment</a>
+      </div>
       <div className="footer-contact-col">
         <h5>Call or WhatsApp</h5>
         <a href="tel:+919499944939" className="footer-phone">+91 94999 44939</a>
@@ -710,11 +722,11 @@ const Footer = () => (
           </div>
         </div> */}
     <div className="footer-bottom">
-      <p>© 2025 SixtyPlus Global. All rights reserved.</p>
-      <div className="footer-bottom-links">
-        <a href="/terms-and-conditions" className="footer-link-btn">Terms & Conditions</a>
-        <a href="/privacy-policy" className="footer-link-btn">Privacy Policy</a>
-      </div>
+      <p>© 2026 SixtyPlus Global. All rights reserved.</p>
+      {/* <div className="footer-bottom-links">
+        <a href="/cancellation-refund-policy" className="footer-link-btn">Cancellation & Refund</a>
+        <a href="/service-fulfilment-policy" className="footer-link-btn">Service Fulfilment</a>
+      </div> */}
     </div>
     {/* <div className="footer-bottom-line">Because they cared for you first.</div> */}
   </footer>
@@ -743,6 +755,8 @@ export default function App() {
         </>} />
   <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+  <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+  <Route path="/service-fulfilment-policy" element={<ServiceFulfilmentPolicy />} />
 </Routes>
   );
 }

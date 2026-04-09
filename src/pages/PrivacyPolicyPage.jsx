@@ -10,95 +10,322 @@ export default function PrivacyPolicyPage() {
       </div>
       <div style={styles.container}>
         <div style={styles.docHeader}>
-          <p style={styles.docMeta}>SixtyPlus Global &nbsp;·&nbsp; Effective Date: January 1, 2025</p>
+          <p style={styles.docMeta}>Effective Date: 9 April 2026</p>
           <h1 style={styles.docTitle}>Privacy Policy</h1>
           <p style={styles.docIntro}>
-            Your privacy matters to us. This Privacy Policy explains how SixtyPlus Global collects,
-            uses, discloses, and safeguards your information when you visit our website or use our services.
-            Please read this policy carefully.
+            SixtyPlus Global ("SixtyPlus," "we," "us," or "our") values your privacy. This Privacy Policy explains how we collect, use, store, share, and protect your personal information when you visit our website, submit an enquiry, book or use our services, communicate with us, or otherwise interact with us.
+          </p>
+          <p style={styles.docIntro}>
+            By using our website or services, you agree to this Privacy Policy. If you do not agree, please do not use our website or services.
           </p>
           <div style={styles.divider} />
         </div>
 
-        <Section title="1. Information We Collect">
-          <p>When you purchase something from us or fill out a consultation form, as part of that process, we collect the personal information you give us such as your name, address, phone number and email address.</p>
-          <p>When you browse our site, we also automatically receive your computer's internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.</p>
-          <p>With your permission, we may send you emails about our services, care programmes and other updates.</p>
+        <Section title="1. Who We Are">
+          <p><strong>Business Name:</strong> SixtyPlus Global (Part of Nura AI Labs)</p>
+          <p><strong>Registered Address:</strong> Chennai, Tamil Nadu – 600028, India</p>
+          <p><strong>Email:</strong> <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
+          <p>If you have questions about this Privacy Policy or your personal information, you may contact us using the details above.</p>
         </Section>
 
-        <Section title="2. How We Use Your Information">
-          <p>We use the information we collect in the following ways:</p>
+        <Section title="2. Scope of This Policy">
+          <p>This Privacy Policy applies to personal information collected through:</p>
           <ul style={styles.list}>
-            <li>To process your enquiries and consultation requests</li>
-            <li>To provide and improve our senior care services</li>
-            <li>To communicate with you about your account, care plan, or enquiry</li>
-            <li>To send you information about our services, if you have opted in</li>
-            <li>To comply with applicable laws and regulations</li>
+            <li>our website</li>
+            <li>booking forms and consultation forms</li>
+            <li>payment and checkout flows</li>
+            <li>email, phone, WhatsApp, and support interactions</li>
+            <li>appointment scheduling and service coordination</li>
+            <li>subscriptions, memberships, packages, and recurring plans</li>
+            <li>any other official communication or service channel operated by us</li>
+          </ul>
+          <p>This Privacy Policy should be read together with our Terms &amp; Conditions and our Cancellation, Rescheduling &amp; Refund Policy.</p>
+        </Section>
+
+        <Section title="3. Information We Collect">
+          <p>We may collect the following categories of information:</p>
+
+          <h3 style={styles.subsectionTitle}>A. Identity and Contact Information</h3>
+          <ul style={styles.list}>
+            <li>full name</li>
+            <li>patient name</li>
+            <li>age or date of birth, where necessary</li>
+            <li>email address</li>
+            <li>phone number</li>
+            <li>WhatsApp number</li>
+            <li>postal address</li>
+            <li>city, state, pin code</li>
+            <li>emergency contact details</li>
+            <li>caregiver or family representative details</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>B. Service and Booking Information</h3>
+          <ul style={styles.list}>
+            <li>service requested</li>
+            <li>appointment details</li>
+            <li>booking history</li>
+            <li>care preferences</li>
+            <li>location for service delivery</li>
+            <li>communications regarding scheduling, rescheduling, cancellation, and fulfilment</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>C. Payment and Transaction Information</h3>
+          <p><strong>Important:</strong> We do not store your full card details, CVV, or complete banking credentials on our systems unless expressly stated and lawfully permitted. Payments are processed through authorized third-party payment partners.</p>
+          <ul style={styles.list}>
+            <li>order or booking ID</li>
+            <li>payment amount</li>
+            <li>payment status</li>
+            <li>payment method</li>
+            <li>transaction reference number</li>
+            <li>invoice details</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>D. Health or Care-Related Information</h3>
+          <p>Where relevant to providing or coordinating services, we may collect limited health, wellness, mobility, support, or care-related information that you or your authorized representative provide to us, including:</p>
+          <ul style={styles.list}>
+            <li>basic care needs</li>
+            <li>symptoms or service requirements shared during booking</li>
+            <li>mobility or accessibility requirements</li>
+            <li>patient condition details reasonably required for coordination of service</li>
+          </ul>
+          <p>You should provide only the information necessary for us to deliver or coordinate the requested service.</p>
+
+          <h3 style={styles.subsectionTitle}>E. Technical and Usage Information</h3>
+          <p>When you use our website, we may automatically collect:</p>
+          <ul style={styles.list}>
+            <li>IP address</li>
+            <li>browser type</li>
+            <li>device type</li>
+            <li>operating system</li>
+            <li>pages visited</li>
+            <li>time spent on pages</li>
+            <li>referral source</li>
+            <li>approximate location based on IP</li>
+            <li>cookies and session identifiers</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>F. Communication Records</h3>
+          <p>We may keep records of:</p>
+          <ul style={styles.list}>
+            <li>emails</li>
+            <li>customer support requests</li>
+            <li>call logs</li>
+            <li>WhatsApp or chat messages</li>
+            <li>complaints, feedback, and dispute-resolution communications</li>
           </ul>
         </Section>
 
-        <Section title="3. Consent">
-          <p>When you provide us with personal information to complete a transaction, verify your payment, place an order, or request a service, we imply that you consent to our collecting it and using it for that specific reason only. If we ask for your personal information for a secondary reason, like marketing, we will either ask you directly for your expressed consent, or provide you with an opportunity to opt out.</p>
-          <p><strong>How to withdraw consent:</strong> If after you opt-in, you change your mind, you may withdraw your consent for us to contact you, for the continued collection, use or disclosure of your information, at any time, by contacting us at <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a>.</p>
-        </Section>
-
-        <Section title="4. Disclosure of Information">
-          <p>We may disclose your personal information if we are required by law to do so or if you violate our Terms of Service.</p>
-          <p>In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us. However, certain third-party service providers, such as payment gateways and other payment transaction processors, have their own privacy policies in respect to the information we are required to provide to them for your purchase-related transactions.</p>
-          <p>For these providers, we recommend that you read their privacy policies so you can understand the manner in which your personal information will be handled. Certain providers may be located in or have facilities in a different jurisdiction than either you or us, and your information may become subject to the laws of that jurisdiction.</p>
-          <p>Once you leave our website or are redirected to a third-party website or application, you are no longer governed by this Privacy Policy or our website's Terms of Service.</p>
-        </Section>
-
-        <Section title="5. Analytics">
-          <p>Our site uses Google Analytics to help us learn about site visits and the pages being viewed. Google Analytics collects data about your use of our site in an anonymised form. This data includes pages visited, time spent, and general location. You can opt out of Google Analytics tracking by using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={styles.link}>Google Analytics opt-out browser add-on</a>.</p>
-        </Section>
-
-        <Section title="6. Security">
-          <p>To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed, disclosed, altered or destroyed.</p>
-          <p>If you provide us with your payment information, the information is encrypted using secure socket layer technology (SSL). Although no method of transmission over the Internet or electronic storage is 100% secure, we follow all applicable requirements and implement additional generally accepted industry standards.</p>
-        </Section>
-
-        <Section title="7. Cookies">
-          <p>We use cookies to maintain session information and to improve your browsing experience. You can choose to disable cookies through your individual browser options. If you disable cookies, some features of our site may not function properly.</p>
-          <p>By using our website, you agree to allow third parties to process your IP address, in order to determine your location for the purpose of currency conversion and relevant service display. You also agree to have that data stored in a session cookie in your browser (a temporary cookie which gets automatically removed when you close your browser).</p>
-        </Section>
-
-        <Section title="8. Age of Consent">
-          <p>By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.</p>
-        </Section>
-
-        <Section title="9. Changes to This Privacy Policy">
-          <p>We reserve the right to modify this privacy policy at any time, so please review it frequently. Changes and clarifications will take effect immediately upon their posting on the website. If we make material changes to this policy, we will notify you here that it has been updated, so that you are aware of what information we collect, how we use it, and under what circumstances, if any, we use and/or disclose it.</p>
-          <p>If our company is acquired or merged with another company, your information may be transferred to the new owners so that we may continue to provide services to you.</p>
-        </Section>
-
-        <Section title="10. Your Rights">
-          <p>You have the right to:</p>
+        <Section title="4. How We Collect Information">
+          <p>We collect information:</p>
           <ul style={styles.list}>
-            <li>Access the personal information we hold about you</li>
-            <li>Request correction of inaccurate personal information</li>
-            <li>Request deletion of your personal information, subject to legal obligations</li>
-            <li>Object to the processing of your personal information</li>
-            <li>Withdraw consent at any time where we are relying on consent to process your personal data</li>
+            <li>directly from you when you fill out a form, make a booking, request a consultation, contact us, or make a payment</li>
+            <li>from the patient or authorized representative</li>
+            <li>from caregivers or family members acting on behalf of a patient</li>
+            <li>from our service partners or providers, where necessary to coordinate a booked service</li>
+            <li>automatically through cookies, analytics tools, and standard website technologies</li>
+            <li>from payment gateway partners regarding payment status and transaction confirmation</li>
           </ul>
-          <p>To exercise any of these rights, please contact us using the details below.</p>
         </Section>
 
-        <Section title="11. Contact Us">
-          <p>If you would like to access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information, please contact us:</p>
+        <Section title="5. How We Use Your Information">
+          <p>We may use your personal information for the following purposes:</p>
+
+          <h3 style={styles.subsectionTitle}>A. To Provide and Coordinate Services</h3>
+          <ul style={styles.list}>
+            <li>to receive and process enquiries</li>
+            <li>to create and manage bookings</li>
+            <li>to coordinate consultations, visits, care support, or related services</li>
+            <li>to communicate appointment details and service updates</li>
+            <li>to provide customer support</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>B. To Process Payments and Transactions</h3>
+          <ul style={styles.list}>
+            <li>to confirm orders and payments</li>
+            <li>to generate invoices and receipts</li>
+            <li>to manage refunds, cancellations, and disputes</li>
+            <li>to detect suspicious or unauthorized transactions</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>C. To Improve Operations and Service Quality</h3>
+          <ul style={styles.list}>
+            <li>to understand demand, service performance, and operational issues</li>
+            <li>to improve our website, service delivery, workflows, and support</li>
+            <li>to maintain internal records and audit trails</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>D. To Communicate With You</h3>
+          <ul style={styles.list}>
+            <li>to respond to enquiries</li>
+            <li>to send service confirmations, reminders, updates, and support messages</li>
+            <li>to notify you about changes to our policies or services</li>
+            <li>to send marketing or promotional communications only where permitted or where you have opted in</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>E. To Protect Rights and Prevent Misuse</h3>
+          <ul style={styles.list}>
+            <li>to prevent fraud, abuse, misuse, spam, and unauthorized activity</li>
+            <li>to investigate complaints or disputes</li>
+            <li>to protect our customers, personnel, partners, systems, and legal rights</li>
+          </ul>
+
+          <h3 style={styles.subsectionTitle}>F. To Comply With Law</h3>
+          <ul style={styles.list}>
+            <li>to comply with applicable legal, regulatory, tax, accounting, law-enforcement, or contractual obligations</li>
+          </ul>
+        </Section>
+
+        <Section title="6. Basis on Which We Process Information">
+          <p>Depending on the nature of the interaction, we may process your information because:</p>
+          <ul style={styles.list}>
+            <li>it is necessary to provide or coordinate the service you requested</li>
+            <li>you provided consent</li>
+            <li>it is necessary to communicate with you regarding your booking or enquiry</li>
+            <li>it is necessary for payment processing, fraud prevention, or record-keeping</li>
+            <li>it is required under applicable law</li>
+            <li>it is necessary for our legitimate operational, safety, support, or compliance purposes, to the extent permitted by law</li>
+          </ul>
+        </Section>
+
+        <Section title="7. Consent">
+          <p>When you provide personal information for a booking, consultation request, transaction, service coordination, or support request, you consent to our using that information for that purpose.</p>
+          <p>Where we rely on consent for optional communications, marketing, or particular data uses, you may withdraw that consent at any time by contacting us.</p>
+          <p>Withdrawal of consent does not affect processing already carried out lawfully before withdrawal and may affect our ability to provide certain services where the information is necessary for service delivery.</p>
+        </Section>
+
+        <Section title="8. Information Shared on Behalf of a Patient">
+          <p>If you provide personal or care-related information about a patient, parent, family member, or dependent, you represent that you are authorized to do so and that the information provided is accurate to the best of your knowledge.</p>
+        </Section>
+
+        <Section title="9. How We Share Information">
+          <p>We do not sell your personal information. We may share your information only in the following circumstances:</p>
+
+          <h3 style={styles.subsectionTitle}>A. With Service Providers and Operational Partners</h3>
+          <p>We may share information with our employees, contractors, partner professionals, logistics or coordination teams, and service providers only to the extent necessary to deliver, support, or coordinate the requested service.</p>
+
+          <h3 style={styles.subsectionTitle}>B. With Payment Partners</h3>
+          <p>Payments may be processed through third-party payment gateways, banks, or payment service providers. These third parties may receive transaction-related information necessary to process the payment, confirm the status, handle reversals, and manage fraud checks.</p>
+
+          <h3 style={styles.subsectionTitle}>C. With Technology and Support Vendors</h3>
+          <p>We may use third-party vendors for hosting, analytics, messaging, customer support, scheduling, CRM, or communications infrastructure. They receive access only as needed to perform services for us.</p>
+
+          <h3 style={styles.subsectionTitle}>D. With Regulators, Law Enforcement, or Legal Authorities</h3>
+          <p>We may disclose information if required by law, court order, lawful government request, or where necessary to protect rights, safety, or legal claims.</p>
+
+          <h3 style={styles.subsectionTitle}>E. Business Transfers</h3>
+          <p>If our business is reorganized, merged, acquired, or transferred, information may be transferred as part of that transaction, subject to applicable law.</p>
+        </Section>
+
+        <Section title="10. Payment Gateway and Third-Party Websites">
+          <p>Our website may integrate with or redirect you to third-party services, including payment gateways and other service platforms. Once you leave our website or submit data to a third-party service, that party's own privacy policy and terms apply.</p>
+          <p>We encourage you to review the privacy policies of payment gateways and third-party platforms before completing a transaction.</p>
+        </Section>
+
+        <Section title="11. Cookies and Similar Technologies">
+          <p>We may use cookies, session tools, analytics tools, and similar technologies to:</p>
+          <ul style={styles.list}>
+            <li>keep the website functioning properly</li>
+            <li>remember user preferences</li>
+            <li>understand traffic and usage</li>
+            <li>improve performance and user experience</li>
+            <li>secure sessions and detect suspicious activity</li>
+          </ul>
+          <p>You can control cookies through your browser settings. Disabling cookies may affect website functionality.</p>
+        </Section>
+
+        <Section title="12. Analytics">
+          <p>We may use analytics tools such as Google Analytics or similar services to understand website traffic, user behavior, and performance. These tools may collect technical and usage data such as page views, session duration, device type, and referral source.</p>
+          <p>These tools help us improve our website and service experience.</p>
+        </Section>
+
+        <Section title="13. Data Retention">
+          <p>We retain personal information only for as long as reasonably necessary for:</p>
+          <ul style={styles.list}>
+            <li>providing services</li>
+            <li>customer support and follow-up</li>
+            <li>internal record-keeping</li>
+            <li>refunds, disputes, and complaint handling</li>
+            <li>tax, audit, accounting, and legal compliance</li>
+            <li>fraud prevention and security review</li>
+          </ul>
+          <p>Retention periods may vary depending on the type of information, the service involved, and legal requirements.</p>
+        </Section>
+
+        <Section title="14. Data Security">
+          <p>We take reasonable technical, administrative, and organizational measures to protect personal information against unauthorized access, misuse, alteration, disclosure, or destruction.</p>
+          <p>These measures may include:</p>
+          <ul style={styles.list}>
+            <li>SSL or secure transmission protocols</li>
+            <li>restricted access controls</li>
+            <li>password and system security practices</li>
+            <li>vendor access limitations</li>
+            <li>operational review and monitoring</li>
+          </ul>
+          <p>However, no method of transmission or storage is completely secure. We therefore cannot guarantee absolute security.</p>
+        </Section>
+
+        <Section title="15. Cross-Border Storage or Processing">
+          <p>Some of our service providers, vendors, analytics providers, messaging tools, or payment partners may store or process information outside your state or country. Where this happens, we will seek to ensure that the information is handled with reasonable safeguards and in accordance with applicable law.</p>
+        </Section>
+
+        <Section title="16. Your Rights">
+          <p>Subject to applicable law, you may have the right to:</p>
+          <ul style={styles.list}>
+            <li>request access to the personal information we hold about you</li>
+            <li>request correction of inaccurate or incomplete information</li>
+            <li>request deletion of information where deletion is legally permitted</li>
+            <li>withdraw consent for certain processing</li>
+            <li>object to or restrict certain uses, where applicable</li>
+            <li>opt out of promotional communications</li>
+          </ul>
+          <p>To exercise any of these rights, contact us using the details in this Policy. We may need to verify your identity before acting on your request.</p>
+        </Section>
+
+        <Section title="17. Marketing Communications">
+          <p>We may send you service-related messages without separate marketing consent where necessary for bookings, transactions, reminders, support, and customer care.</p>
+          <p>We will send promotional or marketing communications only where permitted by law or where you have opted in. You may opt out of marketing messages at any time using the unsubscribe option or by contacting us.</p>
+        </Section>
+
+        <Section title="18. Children and Minors">
+          <p>Our services are not intended to be independently contracted online by children. Where information relating to a minor is provided in connection with a service, it must be provided by a parent, guardian, or authorized representative.</p>
+        </Section>
+
+        <Section title="19. Sensitive Information">
+          <p>Please do not send us more medical or sensitive personal information than is reasonably necessary for the requested service. Where sensitive or care-related information is shared with us, you acknowledge that it is being shared for the purpose of enabling, coordinating, supporting, or assessing the requested service.</p>
+        </Section>
+
+        <Section title="20. Complaints and Grievances">
+          <p>If you have a complaint regarding privacy, data use, or misuse of your information, please contact us first so we can investigate and respond.</p>
           <div style={styles.contactBox}>
-            <p style={styles.contactLine}><strong>SixtyPlus Global</strong></p>
-            <p style={styles.contactLine}>Chennai, Tamil Nadu — 600028, India</p>
+            <p style={styles.contactLine}><strong>Privacy / Grievance Contact:</strong></p>
+            <p style={styles.contactLine}>SixtyPlus Global</p>
+            <p style={styles.contactLine}>Chennai, Tamil Nadu – 600028, India</p>
             <p style={styles.contactLine}>Email: <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
             <p style={styles.contactLine}>Phone: <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
-            <p style={styles.contactLine}>WhatsApp: <a href="https://wa.me/919499944939" style={styles.link}>+91 94999 44939</a></p>
+          </div>
+        </Section>
+
+        <Section title="21. Changes to This Privacy Policy">
+          <p>We may update this Privacy Policy from time to time. The latest version will always be posted on this page with the revised effective date. Your continued use of our website or services after any update constitutes acceptance of the revised Policy, to the extent permitted by law.</p>
+        </Section>
+
+        <Section title="22. Contact Us">
+          <p>If you would like to access, correct, update, or request deletion of your information, or if you have any questions about this Privacy Policy, please contact:</p>
+          <div style={styles.contactBox}>
+            <p style={styles.contactLine}><strong>SixtyPlus Global</strong></p>
+            <p style={styles.contactLine}>Chennai, Tamil Nadu – 600028, India</p>
+            <p style={styles.contactLine}>Email: <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
+            <p style={styles.contactLine}>Phone: <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
           </div>
         </Section>
 
         <div style={styles.footer}>
-          <p>© 2025 SixtyPlus Global. All rights reserved.</p>
+          <p>© 2026 SixtyPlus Global. All rights reserved.</p>
           <div style={styles.footerLinks}>
             <Link to="/terms-and-conditions" style={styles.footerLink}>Terms &amp; Conditions</Link>
+            <Link to="/cancellation-refund-policy" style={styles.footerLink}>Cancellation & Refund</Link>
+            <Link to="/service-fulfilment-policy" style={styles.footerLink}>Service Fulfilment</Link>
             <Link to="/" style={styles.footerLink}>Back to Home</Link>
           </div>
         </div>
@@ -164,7 +391,7 @@ const styles = {
     color: '#444',
     lineHeight: 1.75,
     fontFamily: "'Helvetica Neue', Arial, sans-serif",
-    marginBottom: '28px',
+    marginBottom: '12px',
   },
   divider: {
     borderTop: '2px solid #111',
@@ -184,6 +411,14 @@ const styles = {
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
     marginBottom: '14px',
+  },
+  subsectionTitle: {
+    fontSize: '15px',
+    fontWeight: '700',
+    color: '#000',
+    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+    marginTop: '18px',
+    marginBottom: '8px',
   },
   sectionBody: {
     display: 'flex',
@@ -210,7 +445,7 @@ const styles = {
   contactLine: {
     fontSize: '14px',
     color: '#333',
-    margin: 0,
+    margin: '3px 0',
     fontFamily: "'Helvetica Neue', Arial, sans-serif",
   },
   link: {

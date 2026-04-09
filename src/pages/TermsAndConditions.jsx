@@ -10,134 +10,222 @@ export default function TermsAndConditions() {
       </div>
       <div style={styles.container}>
         <div style={styles.docHeader}>
-          <p style={styles.docMeta}>SixtyPlus Global &nbsp;·&nbsp; Effective Date: January 1, 2025</p>
+          <p style={styles.docMeta}>Effective Date: 9 April 2026</p>
           <h1 style={styles.docTitle}>Terms &amp; Conditions</h1>
           <p style={styles.docIntro}>
-            Please read these Terms of Service carefully before accessing or using our website.
-            By accessing or using any part of the site, you agree to be bound by these Terms.
+            These Terms &amp; Conditions ("Terms") govern your access to and use of the website, mobile interfaces, communication channels, and services made available by SixtyPlus Global ("SixtyPlus," "we," "us," or "our").
+          </p>
+          <p style={styles.docIntro}>
+            By accessing our website, booking a service, making a payment, registering an account, subscribing to a plan, or otherwise using our services, you agree to be bound by these Terms, our Privacy Policy, and our Cancellation, Rescheduling &amp; Refund Policy. If you do not agree, do not use our website or services.
           </p>
           <div style={styles.divider} />
         </div>
 
-        <Section title="Overview">
-          <p>This website is operated by SixtyPlus Global. Throughout the site, the terms "we", "us" and "our" refer to SixtyPlus Global. SixtyPlus Global offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.</p>
-          <p>By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/or contributors of content.</p>
-          <p>If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service. Any new features or tools which are added to the current platform shall also be subject to the Terms of Service. We reserve the right to update, change or replace any part of these Terms of Service by posting updates and/or changes to our website. Your continued use of or access to the website following the posting of any changes constitutes acceptance of those changes.</p>
+        <Section title="1. About Us">
+          <p>SixtyPlus Global provides senior care support, care coordination, wellness support services, and, where applicable, facilitation and scheduling of consultations, visits, assessments, or related support services through our internal team and/or independent partner professionals and service providers.</p>
+          <div style={styles.contactBox}>
+            <p style={styles.contactLine}><strong>Registered Business Name:</strong> SixtyPlus Global</p>
+            <p style={styles.contactLine}><strong>Registered Address:</strong> Chennai, Tamil Nadu – 600028, India</p>
+            <p style={styles.contactLine}><strong>Email:</strong> <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
+            <p style={styles.contactLine}><strong>Phone:</strong> <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
+          </div>
         </Section>
 
-        <Section title="Section 1 — Online Platform Terms">
-          <p>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority and have given us your consent to allow any of your minor dependents to use this site.</p>
-          <p>You may not use our products or services for any illegal or unauthorized purpose, nor may you, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws). You must not transmit any worms, viruses, or any code of a destructive nature. A breach or violation of any of the Terms will result in immediate termination of your Services.</p>
-        </Section>
-
-        <Section title="Section 2 — General Conditions">
-          <p>We reserve the right to refuse service to anyone for any reason at any time. You understand that your content (not including payment information) may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Payment information is always encrypted during transfer over networks.</p>
-          <p>You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Service, use of the Service, or access to the Service or any contact on the website through which the service is provided, without express written permission by us.</p>
-        </Section>
-
-        <Section title="Section 3 — Accuracy, Completeness and Timeliness of Information">
-          <p>We are not responsible if information made available on this site is not accurate, complete or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or more timely sources of information. Any reliance on the material on this site is at your own risk.</p>
-          <p>We reserve the right to modify the contents of this site at any time, but we have no obligation to update any information on our site. You agree that it is your responsibility to monitor changes to our site.</p>
-        </Section>
-
-        <Section title="Section 4 — Modifications to the Service and Prices">
-          <p>Prices for our services are subject to change without notice. We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time. We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.</p>
-        </Section>
-
-        <Section title="Section 5 — Services">
-          <p>Certain services may be available exclusively through the website and may have limited availability, subject to our Service Policy. We have made every effort to accurately describe our services on this site. We cannot guarantee that the description of any service will be fully accurate. We reserve the right, but are not obligated, to limit the provision of our services to any person, geographic region or jurisdiction. We may exercise this right on a case-by-case basis.</p>
-          <p>All descriptions of services or service pricing are subject to change at any time without notice, at the sole discretion of SixtyPlus Global. We reserve the right to discontinue any service at any time. Any offer for any service made on this site is void where prohibited.</p>
-        </Section>
-
-        <Section title="Section 6 — Accuracy of Billing and Account Information">
-          <p>We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities of services purchased per person or per household. In the event that we make a change to or cancel an order, we may attempt to notify you by contacting the e-mail and/or phone number provided at the time the order was made.</p>
-          <p>You agree to provide current, complete and accurate purchase and account information for all purchases made through our platform. You agree to promptly update your account and other information, including your email address, so that we can complete your transactions and contact you as needed.</p>
-        </Section>
-
-        <Section title="Section 7 — Third-Party Tools">
-          <p>We may provide you with access to third-party tools over which we neither monitor nor have any control nor input. You acknowledge and agree that we provide access to such tools "as is" and "as available" without any warranties, representations or conditions of any kind and without any endorsement. We shall have no liability whatsoever arising from or relating to your use of optional third-party tools.</p>
-        </Section>
-
-        <Section title="Section 8 — Third-Party Links">
-          <p>Certain content, products and services available via our Service may include materials from third-parties. Third-party links on this site may direct you to third-party websites that are not affiliated with us. We are not responsible for examining or evaluating the content or accuracy and we do not warrant and will not have any liability or responsibility for any third-party materials or websites, or for any other materials, products, or services of third-parties.</p>
-          <p>We are not liable for any harm or damages related to the purchase or use of goods, services, resources, content, or any other transactions made in connection with any third-party websites. Please review carefully the third-party's policies and practices and make sure you understand them before you engage in any transaction.</p>
-        </Section>
-
-        <Section title="Section 9 — User Comments, Feedback and Submissions">
-          <p>If, at our request, you send certain specific submissions or without a request from us you send creative ideas, suggestions, proposals, plans, or other materials, whether online, by email, by postal mail, or otherwise (collectively, 'comments'), you agree that we may, at any time, without restriction, edit, copy, publish, distribute, translate and otherwise use in any medium any comments that you forward to us. We are under no obligation to maintain any comments in confidence, pay compensation for any comments, or respond to any comments.</p>
-          <p>You agree that your comments will not violate any right of any third-party, including copyright, trademark, privacy, personality or other personal or proprietary right. You are solely responsible for any comments you make and their accuracy.</p>
-        </Section>
-
-        <Section title="Section 10 — Personal Information">
-          <p>Your submission of personal information through our platform is governed by our Privacy Policy. Please review our Privacy Policy, which is incorporated into these Terms of Service by this reference.</p>
-        </Section>
-
-        <Section title="Section 11 — Errors, Inaccuracies and Omissions">
-          <p>Occasionally there may be information on our site or in the Service that contains typographical errors, inaccuracies or omissions that may relate to service descriptions, pricing, promotions, offers, and availability. We reserve the right to correct any errors, inaccuracies or omissions, and to change or update information or cancel orders if any information in the Service or on any related website is inaccurate at any time without prior notice.</p>
-        </Section>
-
-        <Section title="Section 12 — Prohibited Uses">
-          <p>In addition to other prohibitions as set forth in the Terms of Service, you are prohibited from using the site or its content:</p>
+        <Section title="2. Eligibility">
+          <p>You may use our website and services only if:</p>
           <ul style={styles.list}>
-            <li>For any unlawful purpose or to solicit others to perform or participate in any unlawful acts</li>
-            <li>To violate any international, federal, provincial or state regulations, rules, laws, or local ordinances</li>
-            <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
-            <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability</li>
-            <li>To submit false or misleading information</li>
-            <li>To upload or transmit viruses or any other type of malicious code</li>
-            <li>To collect or track the personal information of others</li>
-            <li>To spam, phish, pharm, pretext, spider, crawl, or scrape</li>
-            <li>For any obscene or immoral purpose</li>
-            <li>To interfere with or circumvent the security features of the Service or any related website</li>
+            <li>you are at least 18 years old and legally capable of entering into a binding contract; or</li>
+            <li>you are using the services on behalf of a patient, family member, dependent, or another person with valid authority to do so.</li>
           </ul>
-          <p>We reserve the right to terminate your use of the Service or any related website for violating any of the prohibited uses.</p>
+          <p>You agree that all information provided by you is true, complete, and up to date.</p>
         </Section>
 
-        <Section title="Section 13 — Disclaimer of Warranties; Limitation of Liability">
-          <p>We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free. We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable.</p>
-          <p>You expressly agree that your use of, or inability to use, the service is at your sole risk. The service and all products and services delivered to you through the service are (except as expressly stated by us) provided 'as is' and 'as available' for your use, without any representation, warranties or conditions of any kind, either express or implied.</p>
-          <p>In no case shall SixtyPlus Global, our directors, officers, employees, affiliates, agents, contractors, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the service or any products or services procured using the service.</p>
+        <Section title="3. Scope of Services">
+          <p>SixtyPlus may offer, directly or through partner providers, services including but not limited to:</p>
+          <ul style={styles.list}>
+            <li>senior care support and coordination</li>
+            <li>home visit coordination</li>
+            <li>consultations, assessments, and wellness support</li>
+            <li>care plans, subscriptions, or service packages</li>
+            <li>appointment scheduling and related support services</li>
+          </ul>
+          <p>The exact nature, scope, timing, pricing, and availability of services may vary by city, provider availability, patient condition, service category, and operational constraints.</p>
+          <p>Nothing on the website shall be interpreted as a guarantee that every listed service is available at all times or in all locations.</p>
         </Section>
 
-        <Section title="Section 14 — Indemnification">
-          <p>You agree to indemnify, defend and hold harmless SixtyPlus Global and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, and employees, harmless from any claim or demand, including reasonable attorneys' fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.</p>
+        <Section title="4. No Emergency Service">
+          <p>Our platform and services are <strong>not emergency services</strong>. If you believe a patient is experiencing a medical emergency, immediately contact local emergency services or go to the nearest hospital.</p>
         </Section>
 
-        <Section title="Section 15 — Severability">
-          <p>In the event that any provision of these Terms of Service is determined to be unlawful, void or unenforceable, such provision shall nonetheless be enforceable to the fullest extent permitted by applicable law, and the unenforceable portion shall be deemed to be severed from these Terms of Service. Such determination shall not affect the validity and enforceability of any other remaining provisions.</p>
+        <Section title="5. Independent Professional Judgment">
+          <p>Where services are rendered by doctors, nurses, therapists, care staff, diagnostic providers, or other professionals, such professionals remain responsible for their own professional judgment, advice, and conduct within the scope of applicable law and professional standards.</p>
+          <p>SixtyPlus may facilitate scheduling, coordination, communication, collection, and support, but does not override or control the independent medical or professional judgment of licensed providers.</p>
         </Section>
 
-        <Section title="Section 16 — Termination">
-          <p>The obligations and liabilities of the parties incurred prior to the termination date shall survive the termination of this agreement for all purposes. These Terms of Service are effective unless and until terminated by either you or us. You may terminate these Terms of Service at any time by notifying us that you no longer wish to use our Services, or when you cease using our site.</p>
-          <p>If in our sole judgment you fail, or we suspect that you have failed, to comply with any term or provision of these Terms of Service, we also may terminate this agreement at any time without notice and you will remain liable for all amounts due up to and including the date of termination.</p>
+        <Section title="6. User Responsibilities">
+          <p><strong>You agree to:</strong></p>
+          <ul style={styles.list}>
+            <li>provide accurate patient, booking, and contact information</li>
+            <li>disclose material facts relevant to service delivery</li>
+            <li>ensure that the patient and/or authorized representative is available at the scheduled time</li>
+            <li>maintain respectful conduct toward our staff, partner providers, and support teams</li>
+            <li>comply with all instructions reasonably required for safe service delivery</li>
+            <li>use the website and services only for lawful purposes</li>
+          </ul>
+          <p><strong>You must not:</strong></p>
+          <ul style={styles.list}>
+            <li>misuse the platform</li>
+            <li>submit false or misleading information</li>
+            <li>interfere with platform security or functionality</li>
+            <li>make fraudulent bookings or payments</li>
+            <li>use abusive, threatening, defamatory, or unlawful language or conduct toward our staff or providers</li>
+          </ul>
         </Section>
 
-        <Section title="Section 17 — Entire Agreement">
-          <p>These Terms of Service and any policies or operating rules posted by us on this site or in respect to The Service constitute the entire agreement and understanding between you and us and govern your use of the Service, superseding any prior or contemporaneous agreements, communications and proposals, whether oral or written, between you and us (including, but not limited to, any prior versions of the Terms of Service).</p>
+        <Section title="7. Bookings and Service Requests">
+          <p>A booking or service request is treated as confirmed only after:</p>
+          <ul style={styles.list}>
+            <li>required information has been received,</li>
+            <li>applicable payment or authorization has been completed, and</li>
+            <li>we issue a confirmation by website, app, email, SMS, WhatsApp, phone, or other official communication channel.</li>
+          </ul>
+          <p>We reserve the right to decline, reschedule, modify, or cancel a booking where necessary due to provider unavailability, incomplete information, operational limitations, safety concerns, suspected fraud, legal restrictions, force majeure events, or other legitimate reasons.</p>
         </Section>
 
-        <Section title="Section 18 — Governing Law">
-          <p>These Terms of Service and any separate agreements whereby we provide you Services shall be governed by and construed in accordance with the laws of India, and any disputes shall be subject to the exclusive jurisdiction of the courts located in Chennai, Tamil Nadu — 600028.</p>
+        <Section title="8. Pricing">
+          <p>All prices displayed on the website or otherwise communicated by us are in <strong>Indian Rupees </strong> or <strong>USD</strong> unless expressly stated otherwise.</p>
+          <p>Pricing may vary depending on:</p>
+          <ul style={styles.list}>
+            <li>service type</li>
+            <li>duration</li>
+            <li>location</li>
+            <li>provider category</li>
+            <li>urgency</li>
+            <li>add-on services</li>
+            <li>taxes and statutory levies</li>
+            <li>subscription plan or package terms</li>
+          </ul>
+          <p>Applicable taxes, government levies, platform fees, or convenience fees, if any, will be disclosed at or before checkout.</p>
         </Section>
 
-        <Section title="Section 19 — Changes to Terms of Service">
-          <p>You can review the most current version of the Terms of Service at any time on this page. We reserve the right, at our sole discretion, to update, change or replace any part of these Terms of Service by posting updates and changes to our website. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website or the Service following the posting of any changes to these Terms of Service constitutes acceptance of those changes.</p>
+        <Section title="9. Payments">
+          <p>Payments may be collected through third-party payment gateways, banking partners, UPI, cards, net banking, links, recurring mandates, or other approved payment methods.</p>
+          <p><strong>By making a payment, you:</strong></p>
+          <ul style={styles.list}>
+            <li>authorize the applicable payment transaction</li>
+            <li>confirm that you are legally entitled to use the chosen payment instrument</li>
+            <li>agree to pay all charges, taxes, and applicable fees disclosed at checkout or otherwise agreed with us</li>
+          </ul>
+          <p>Payment authorization does not by itself guarantee service completion. Service remains subject to confirmation, provider availability, and these Terms.</p>
         </Section>
 
-        <Section title="Section 20 — Contact Information">
-          <p>Questions about the Terms of Service should be sent to us at:</p>
+        <Section title="10. Recurring Plans and Auto-Renewals">
+          <p>If you enroll in a recurring subscription, membership, package, or auto-renewal plan:</p>
+          <ul style={styles.list}>
+            <li>you authorize us or our payment partner to charge the recurring amount as disclosed at sign-up</li>
+            <li>the billing frequency, plan benefits, and renewal terms will be displayed at the time of subscription</li>
+            <li>you may cancel future renewals before the next billing date in accordance with the applicable plan rules</li>
+            <li>cancellation of auto-renewal prevents future billing but does not automatically entitle you to a refund for the current billing cycle unless expressly stated in the applicable refund policy or required by law</li>
+          </ul>
+        </Section>
+
+        <Section title="11. Cancellation, Rescheduling, and Refunds">
+          <p>All cancellations, rescheduling requests, failed service cases, duplicate payments, and refunds are governed by our Cancellation, Rescheduling &amp; Refund Policy, which forms an integral part of these Terms.</p>
+        </Section>
+
+        <Section title="12. Service Fulfilment and Timelines">
+          <p>Service timing is subject to operational conditions, provider availability, location, patient readiness, traffic, weather, and unforeseen events. Any time slot or ETA is an estimate unless explicitly guaranteed in writing.</p>
+          <p>We will make commercially reasonable efforts to deliver services within the confirmed slot or revised slot communicated to you.</p>
+        </Section>
+
+        <Section title="13. Third-Party Providers and Tools">
+          <p>Our services may involve third-party providers, communication channels, software tools, logistics support, diagnostic partners, payment gateways, or other service partners. We are not responsible for the independent policies, systems, downtime, or acts/omissions of third parties except to the extent required by law.</p>
+        </Section>
+
+        <Section title="14. Accuracy of Website Information">
+          <p>We try to ensure that all information on the website is accurate and current. However, website content may contain errors, omissions, or outdated information relating to services, pricing, availability, or descriptions. We reserve the right to correct, update, suspend, or withdraw content or services without prior notice.</p>
+        </Section>
+
+        <Section title="15. Intellectual Property">
+          <p>All content on the website, including text, graphics, logos, designs, service marks, software, media, and brand elements, is owned by or licensed to SixtyPlus and is protected by applicable intellectual property laws.</p>
+          <p>You may not copy, reproduce, distribute, modify, reverse engineer, publish, or commercially exploit any content without our prior written permission.</p>
+        </Section>
+
+        <Section title="16. Privacy">
+          <p>Your use of the website and services is also governed by our Privacy Policy. By using our services, you consent to the collection, use, storage, and disclosure of information as described in that policy.</p>
+        </Section>
+
+        <Section title="17. Disclaimers">
+          <p>To the fullest extent permitted by law:</p>
+          <ul style={styles.list}>
+            <li>the website and services are provided on an "as is" and "as available" basis</li>
+            <li>we do not guarantee uninterrupted, error-free, or always-available service</li>
+            <li>we do not guarantee that every service will be suitable for every user or patient</li>
+            <li>informational content on the website is for general informational purposes only and does not replace a direct professional evaluation where required</li>
+          </ul>
+        </Section>
+
+        <Section title="18. Limitation of Liability">
+          <p>To the fullest extent permitted by law, SixtyPlus, its affiliates, directors, officers, employees, contractors, agents, and partners shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, including loss of profits, loss of data, business interruption, or loss arising out of or related to:</p>
+          <ul style={styles.list}>
+            <li>use or inability to use the website or services</li>
+            <li>delays, rescheduling, or service interruptions</li>
+            <li>actions or omissions of independent third-party providers</li>
+            <li>unauthorized access, system failures, or third-party technical issues</li>
+          </ul>
+          <p>Nothing in these Terms excludes liability that cannot be excluded under applicable law.</p>
+        </Section>
+
+        <Section title="19. Indemnity">
+          <p>You agree to indemnify and hold harmless SixtyPlus, its affiliates, personnel, and partners from claims, liabilities, losses, damages, costs, and expenses arising out of:</p>
+          <ul style={styles.list}>
+            <li>your breach of these Terms</li>
+            <li>false information submitted by you</li>
+            <li>your misuse of the website or services</li>
+            <li>your violation of applicable law or third-party rights</li>
+          </ul>
+        </Section>
+
+        <Section title="20. Suspension or Termination">
+          <p>We may suspend, restrict, or terminate access to the website or services, or refuse a booking or user, at our discretion, where we reasonably believe there is:</p>
+          <ul style={styles.list}>
+            <li>fraud or payment risk</li>
+            <li>abuse or misuse</li>
+            <li>legal or compliance risk</li>
+            <li>safety risk</li>
+            <li>repeated cancellation or operational disruption</li>
+            <li>breach of these Terms</li>
+          </ul>
+        </Section>
+
+        <Section title="21. Force Majeure">
+          <p>We shall not be liable for failure or delay caused by events beyond our reasonable control, including natural disasters, strikes, disease outbreaks, provider disruptions, transport failures, internet outages, government action, civil unrest, or other force majeure events.</p>
+        </Section>
+
+        <Section title="22. Governing Law and Jurisdiction">
+          <p>These Terms shall be governed by the laws of India. Subject to applicable law, courts located in Chennai, Tamil Nadu shall have exclusive jurisdiction over disputes arising out of or relating to these Terms or our services.</p>
+        </Section>
+
+        <Section title="23. Changes to These Terms">
+          <p>We may update these Terms from time to time. The revised version will be posted on this page with the updated effective date. Continued use of the website or services after such update constitutes acceptance of the revised Terms.</p>
+        </Section>
+
+        <Section title="24. Contact Us">
+          <p>For questions, complaints, cancellations, support requests, or legal notices, contact:</p>
           <div style={styles.contactBox}>
             <p style={styles.contactLine}><strong>SixtyPlus Global</strong></p>
-            <p style={styles.contactLine}>Chennai, Tamil Nadu — 600028, India</p>
+            <p style={styles.contactLine}>Chennai, Tamil Nadu – 600028, India</p>
             <p style={styles.contactLine}>Email: <a href="mailto:info@sixtyplusglobal.com" style={styles.link}>info@sixtyplusglobal.com</a></p>
             <p style={styles.contactLine}>Phone: <a href="tel:+919499944939" style={styles.link}>+91 94999 44939</a></p>
           </div>
         </Section>
 
         <div style={styles.footer}>
-          <p>© 2025 SixtyPlus Global. All rights reserved.</p>
+          <p>© 2026 SixtyPlus Global. All rights reserved.</p>
           <div style={styles.footerLinks}>
             <Link to="/privacy-policy" style={styles.footerLink}>Privacy Policy</Link>
+            <Link to="/cancellation-refund-policy" style={styles.footerLink}>Cancellation & Refund</Link>
+            <Link to="/service-fulfilment-policy" style={styles.footerLink}>Service Fulfilment</Link>
             <Link to="/" style={styles.footerLink}>Back to Home</Link>
           </div>
         </div>
@@ -203,7 +291,7 @@ const styles = {
     color: '#444',
     lineHeight: 1.75,
     fontFamily: "'Helvetica Neue', Arial, sans-serif",
-    marginBottom: '28px',
+    marginBottom: '12px',
   },
   divider: {
     borderTop: '2px solid #111',
